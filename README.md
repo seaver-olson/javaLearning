@@ -1,3 +1,8 @@
+#Current work:
+Setting up Apache Webserver for client/server socketserver test
+
+
+
 # Week 1: Socket Programming
 
 - [x] Introduction to sockets and network communication in Java.
