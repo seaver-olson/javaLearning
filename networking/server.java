@@ -11,8 +11,11 @@ public class server {
         this.port = port;
         this.ip = ip;
         this.name = name;
+	try{
+		System.out.println("Waiting for connections...");
+		ServerSocket socketServer = new ServerSocket(this.port);
+		
     }
-
     //getters
     public int getPort() {
         return port;
