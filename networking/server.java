@@ -18,13 +18,23 @@ public class server {
             System.out.println(e);//catch errors
         }
     }
-
+    
+    /*since this server is basic and can only have one connection at a time
+     closeServer() and disconnectClient() do the same thing but for abstractions sake 
+     I created both*/
+    public void closeServer(){
+        socketServer.close();
+    }
+    public void disconnectClient(){
+        clientSocket.close();
+    }
     public server(int port, String ip, String name) {
         this.port = port;
         this.ip = ip;
         this.name = name;
         startServer(port);
     }
+
 
     //getters
     public int getPort() {
