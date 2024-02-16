@@ -4,18 +4,28 @@ package javaLearning.networking;
 //made for custom server options
 public class server {
     private int port;
+    private Socket clientSocket;
     private String ip;
     private String name;
+
+    public void startServer(){
+        try{
+            System.out.println("Waiting for connections...");
+            ServerSocket socketServer = new ServerSocket(this.port);
+            clientSocket = socketServer.accept();
+        }
+        catch(Exception e){
+            System.out.println(e);//catch errors
+        }
+    }
 
     public server(int port, String ip, String name) {
         this.port = port;
         this.ip = ip;
         this.name = name;
-	try{
-		System.out.println("Waiting for connections...");
-		ServerSocket socketServer = new ServerSocket(this.port);
-		
+        startServer(port);
     }
+
     //getters
     public int getPort() {
         return port;
