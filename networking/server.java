@@ -17,16 +17,40 @@ public class server {
             clientSocket = socketServer.accept();
             //welcomes client
             out = new DataOutputStream(clientSocket.getOutputStream());
+            in = new DataInputStream(clientSocket.getInputStream());
             out.writeUTF("Welcome to the server, you are connected to the server on port " + this.port);
-            //closes connection after sending message
-            out.writeUTF("Server Closing...");
-            clientSocket.close();
-            socketServer.close();
-            out.close();
-            System.out.println("Server Closed");
+            //listen for messages
+            while(true){
+                try{
+                    //if message is not "exit" keep sending messages
+                    String message = in.readUTF();
+                    System.out.println("Client: " + message);
+                    if(message.equals("exit")){
+                        out.writeUTF("Server has disconnected");
+                        break;
+                    }
+                    out.writeUTF("Message Recieved: " + message);
+                }
+                catch(Exception e){
+                    System.out.println(e);
+                    break;
+                }
+            }
         }
         catch(Exception e){
             System.out.println(e);//catch errors
+        }
+        finally{
+            try{
+                //close all connections
+                in.close();
+                out.close();
+                clientSocket.close();
+                socketServer.close();
+            }
+            catch(Exception e){
+                System.out.println(e);
+            }
         }
     }
     

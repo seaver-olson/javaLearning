@@ -1,9 +1,11 @@
 import java.io.*;
 import java.net.*;
+import java.util.Scanner;
 
 public class client {
     private String ip;
     private int port;
+    private Scanner scanner;
     private Socket clientSocket;
     private DataOutputStream out;
     private DataInputStream in;
@@ -22,11 +24,36 @@ public class client {
             in = new DataInputStream(clientSocket.getInputStream());
             //print server message
             System.out.println(in.readUTF());
+            chatWithServer();
         }
         catch(Exception e){
             System.out.println(e);
         }
     }
+
+    //open chat with server
+    public void chatWithServer(){
+        scanner = new Scanner(System.in);
+        //if message is not "exit" keep sending messages
+        try {
+            while (true) {
+                String message = scanner.nextLine();
+                out.writeUTF(message);
+                if (message.equals("exit")) {
+                    out.writeUTF("Client has disconnected");
+                    out.close(); // Close the output stream
+                    break;
+                }
+                System.out.println(in.readUTF());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            scanner.close(); 
+        }
+        
+    }
+
     public static void main(String[] args){
         client c = new client("127.0.0.1", 8080);
     }
