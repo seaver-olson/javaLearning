@@ -1,18 +1,29 @@
-package javaLearning.networking;
-
+import java.net.*;
+import java.io.*;
 
 //made for custom server options
 public class server {
-    private int port;
-    private Socket clientSocket;
-    private String ip;
-    private String name;
+    private int port;//implict port
+    private ServerSocket socketServer;//Server-side Socket
+    private Socket clientSocket;//Client-side Socket
+    private DataOutputStream out;//output stream
+    private DataInputStream in;//input stream
+
 
     public void startServer(){
         try{
             System.out.println("Waiting for connections...");
-            ServerSocket socketServer = new ServerSocket(this.port);
+            socketServer = new ServerSocket(this.port);
             clientSocket = socketServer.accept();
+            //welcomes client
+            out = new DataOutputStream(clientSocket.getOutputStream());
+            out.writeUTF("Welcome to the server, you are connected to the server on port " + this.port);
+            //closes connection after sending message
+            out.writeUTF("Server Closing...");
+            clientSocket.close();
+            socketServer.close();
+            out.close();
+            System.out.println("Server Closed");
         }
         catch(Exception e){
             System.out.println(e);//catch errors
@@ -23,44 +34,30 @@ public class server {
      closeServer() and disconnectClient() do the same thing but for abstractions sake 
      I created both*/
     public void closeServer(){
-        socketServer.close();
+        try{
+            socketServer.close();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
     public void disconnectClient(){
-        clientSocket.close();
-    }
-    public server(int port, String ip, String name) {
-        this.port = port;
-        this.ip = ip;
-        this.name = name;
-        startServer(port);
+        try{
+            clientSocket.close();
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
     }
 
-
-    //getters
-    public int getPort() {
-        return port;
-    }
-    public String getIp() {
-        return ip;
-    }
-    public String getName() {
-        return name;
-    }
-    //setters
-    public void setPort(int port) {
+    public server(int port) {
         this.port = port;
     }
-    public void setIp(String ip) {
-        this.ip = ip;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    //toString
-    @Override
-    public String toString() {
-        return "server{ip='" + ip + "', name='" + name + "', port=" + port + "}";
-    }
-
     
+    public static void main(String[] args){
+        server s = new server(8080);
+        s.startServer();
+        s.closeServer();
+        s.disconnectClient();
+    }
 }
