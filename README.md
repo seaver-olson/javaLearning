@@ -1,5 +1,6 @@
 # Current work:
-Setting up Apache Webserver for client/server socketserver test
+using base template that I made for client server communication to create different types of servers
+IE calculation server, file tranfer server etc
 
 
 
