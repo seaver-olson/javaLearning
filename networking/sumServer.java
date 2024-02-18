@@ -2,7 +2,7 @@ import java.net.*;
 import java.io.*;
 
 //made for custom server options
-public class calcServer {
+public class sumServer {
     private int port;//implict port
     private ServerSocket socketServer;//Server-side Socket
     private Socket clientSocket;//Client-side Socket
@@ -76,12 +76,12 @@ public class calcServer {
         }
     }
 
-    public calcServer(int port) {
+    public sumServer(int port) {
         this.port = port;
     }
     
     public static void main(String[] args){
-        calcServer s = new calcServer(8080);
+        sumServer s = new sumServer(8080);
         s.startServer();
         s.closeServer();
         s.disconnectClient();
