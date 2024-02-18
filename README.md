@@ -1,14 +1,15 @@
 # Current work:
-Setting up Apache Webserver for client/server socketserver test
+using base template that I made for client server communication to create different types of servers
+IE calculation server, file tranfer server etc
 
 
 
 # Week 1: Socket Programming
 
 - [x] Introduction to sockets and network communication in Java.
-- [ ] Understanding TCP and UDP protocols and their implementation in socket programming.
-- [ ] Creating a simple client-server application using sockets.
-- [ ] Error handling and exception management in socket programming.
+- [x] Understanding TCP and UDP protocols and their implementation in socket programming.
+- [x] Creating a simple client-server application using sockets.
+- [x] Error handling and exception management in socket programming.
 
 **Resources:**
 - [Oracle Java Tutorials on Network Programming](https://docs.oracle.com/javase/tutorial/networking/index.html)
