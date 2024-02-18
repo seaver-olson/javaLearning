@@ -24,13 +24,12 @@ public class calcServer {
                 try{
                     //if message is not "exit" keep sending messages
                     String message = in.readUTF();
-                    System.out.println("Client: " + message);
+                    String[] numbers = message.split(" ");
+                    System.out.println("Client: " + numbers[0] + " " + numbers[1]);
                     if(message.equals("exit")){
                         out.writeUTF("Server has disconnected");
                         break;
-                    }
-                    //split too numbers from space
-                    String[] numbers = message.split(" ");
+                    }               
                     int sum = Integer.parseInt(numbers[0]) + Integer.parseInt(numbers[1]);
                     out.writeUTF("Sum: " + sum);
                 }
@@ -82,7 +81,7 @@ public class calcServer {
     }
     
     public static void main(String[] args){
-        server s = new server(8080);
+        calcServer s = new calcServer(8080);
         s.startServer();
         s.closeServer();
         s.disconnectClient();

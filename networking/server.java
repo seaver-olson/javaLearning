@@ -29,7 +29,7 @@ public class server {
                         out.writeUTF("Server has disconnected");
                         break;
                     }
-                    out.writeUTF("Message Recieved: " + message);
+                    out.writeUTF("Message Rec" + message);
                 }
                 catch(Exception e){
                     System.out.println(e);
