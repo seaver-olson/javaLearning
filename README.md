@@ -1,7 +1,5 @@
 # Current work:
-using base template that I made for client server communication to create different types of servers
-IE calculation server, file tranfer server etc
-
+Learning HTTPS with java to have a webpage open on a specific server
 
 
 # Week 1: Socket Programming
