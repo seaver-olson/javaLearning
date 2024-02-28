@@ -26,6 +26,16 @@ public class register{
         RegisterButton.setBounds(150, 150, 100, 30);
         frame.add(RegisterButton);
 
+        //create small button at bottom left to go back to login page
+        JButton BackButton = new JButton("Back");
+        BackButton.setBounds(10, 230, 100, 30);
+        frame.add(BackButton);
+        BackButton.addActionListener(e -> {
+            frame.dispose();
+            new login();
+        });
+        
+
         //when login button is clicked
         RegisterButton.addActionListener(e -> {
             String username = UsernameField.getText();

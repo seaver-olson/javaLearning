@@ -25,6 +25,15 @@ public class login{
         LoginButton.setBounds(150, 150, 100, 30);
         frame.add(LoginButton);
 
+        JButton RegisterButton = new JButton("Register");
+        RegisterButton.setBounds(250, 230, 100, 30);
+        frame.add(RegisterButton);
+        RegisterButton.addActionListener(e -> {
+            frame.dispose();
+            new register();
+        });
+        
+
         //when login button is clicked
         LoginButton.addActionListener(e -> {
             String username = UsernameField.getText();
