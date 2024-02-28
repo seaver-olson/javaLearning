@@ -34,7 +34,7 @@ public class register{
             frame.dispose();
             new login();
         });
-        
+
 
         //when login button is clicked
         RegisterButton.addActionListener(e -> {
@@ -43,43 +43,57 @@ public class register{
             //search csv username row, if username exists clear fields and tell user to try again
             //check username from accounts.csv first column using buffered reader
             String[] UsernameList = new String[100];//NOTE: Change this when you release project to account for more accounts
-            try (BufferedReader br = new BufferedReader(new FileReader("accounts.csv"))) {
+            String file = "accounts.csv";
+            try{
+                BufferedReader br = new BufferedReader(new FileReader(file));
                 String line;
                 int i = 0;
-                while ((line = br.readLine()) != null) {
+                while ((line = br.readLine()) != null){
                     String[] values = line.split(",");
                     UsernameList[i] = values[0];
                     i++;
                 }
-            } catch (IOException e1) {
-                e1.printStackTrace();
+                br.close();
             }
+            catch (IOException ex){
+                ex.printStackTrace();
+            }
+            //check if username exists
+            boolean exists = false;
             for (int i = 0; i < UsernameList.length; i++){
                 if (username.equals(UsernameList[i])){
-                    JOptionPane.showMessageDialog(frame, "Username already exists");
-                    UsernameField.setText("");
-                    PasswordField.setText("");
-                    username = "";
-                    password = "";
+                    exists = true;
                     break;
                 }
-                else{
-                    //create new row in accounts.csv
-                    //write username and password to accounts.csv
-                    //open new window
-                    try {
-                        FileWriter writer = new FileWriter("accounts.csv", true);
-                        writer.write(username + "," + password + "\n");
-                        writer.close();
-                    } catch (IOException e1) {
-                        e1.printStackTrace();
-                    }
-                    JOptionPane.showMessageDialog(frame, "Account Created");
+            }
+            if (exists){
+                JOptionPane.showMessageDialog(frame, "Username already exists");
+                UsernameField.setText("");
+                PasswordField.setText("");
+                username = "";
+                password = "";
+            }
+            else{
+                //append username and password to accounts.csv
+                try{
+                    FileWriter fw = new FileWriter(file, true);
+                    BufferedWriter bw = new BufferedWriter(fw);
+                    PrintWriter pw = new PrintWriter(bw);
+                    pw.println(username + "," + password);
+                    pw.flush();
+                    pw.close();
+                    JOptionPane.showMessageDialog(frame, "Account created successfully");
                     frame.dispose();
-                    new fetchPage(username);
-
+                    new login();
+                }
+                catch (IOException ex){
+                    ex.printStackTrace();
                 }
             }
+            
+            
+                
+            
         });
 
         frame.setLayout(null);
