@@ -84,8 +84,7 @@ public class login{
                     UsernameList[i] = "";
                     PasswordList[i] = "";
                 }
-                System.out.println(UsernameList[i] + " " + PasswordList[i]);
-                
+
                 i++;
             }
             br.close();

@@ -82,6 +82,9 @@ public class register{
                     pw.println(username + "," + password);
                     pw.flush();
                     pw.close();
+                    //create folder for user
+                    File dir = new File("userData/" + username);
+                    dir.mkdir();
                     JOptionPane.showMessageDialog(frame, "Account created successfully");
                     frame.dispose();
                     new login();
@@ -90,7 +93,7 @@ public class register{
                     ex.printStackTrace();
                 }
             }
-            
+
             
                 
             
