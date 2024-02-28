@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.io.*;
 
 public class login{
     public login(){
@@ -32,7 +33,7 @@ public class login{
             frame.dispose();
             new register();
         });
-        
+
 
         //when login button is clicked
         LoginButton.addActionListener(e -> {
@@ -63,14 +64,44 @@ public class login{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
+    
     public static boolean LoginAttempt(String username, String password){
-        if (username.equals("admin") && password.equals("admin")){
-            System.out.println("Login Successful");
-            return true;
+        //get column 1 and 2 from accounts.csv
+        String file = "accounts.csv";
+        String[] UsernameList = new String[100];
+        String[] PasswordList = new String[100];
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            int i = 0;
+            while ((line = br.readLine()) != null){
+                String[] values = line.split(",");
+                try{
+                    UsernameList[i] = values[0];
+                    PasswordList[i] = values[1];
+                }
+                catch (ArrayIndexOutOfBoundsException ex){
+                    UsernameList[i] = "";
+                    PasswordList[i] = "";
+                }
+                System.out.println(UsernameList[i] + " " + PasswordList[i]);
+                
+                i++;
+            }
+            br.close();
         }
-        else{
-            System.out.println("Login Failed");
-            return false;
+        catch (IOException ex){
+            ex.printStackTrace();
         }
+        //check if username and password match
+        boolean match = false;
+        for (int i = 0; i < UsernameList.length; i++){
+            if (username.equals(UsernameList[i]) && password.equals(PasswordList[i])){
+                match = true;
+                break;
+            }
+        }
+        return match;
     }
+    
 }
