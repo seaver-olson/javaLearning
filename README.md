@@ -15,10 +15,10 @@ Learning HTTPS with java to have a webpage open on a specific server
 
 # Week 2: GUI Building
 
-- [ ] Introduction to Swing and JavaFX for building graphical user interfaces (GUIs).
-- [ ] Creating basic GUI components such as buttons, labels, text fields, etc.
-- [ ] Layout management to organize GUI components effectively.
-- [ ] Event handling for user interactions with GUI components.
+- [x] Introduction to Swing for building graphical user interfaces (GUIs).
+- [x] Creating basic GUI components such as buttons, labels, text fields, etc.
+- [x] Layout management to organize GUI components effectively.
+- [x] Event handling for user interactions with GUI components.
 
 **Resources:**
 - [Oracle JavaFX Tutorials](https://openjfx.io/openjfx-docs/)
@@ -26,10 +26,10 @@ Learning HTTPS with java to have a webpage open on a specific server
 
 # Week 3: Data Management (CSV)
 
-- [ ] Reading and writing CSV files in Java using libraries like OpenCSV or Apache Commons CSV.
-- [ ] Parsing CSV data into Java objects and vice versa.
-- [ ] Handling different types of data formats and structures within CSV files.
-- [ ] Error handling and validation while processing CSV data.
+- [x] Reading and writing CSV files in Java using libraries like OpenCSV or Apache Commons CSV.
+- [x] Parsing CSV data into Java objects and vice versa.
+- [x] Handling different types of data formats and structures within CSV files.
+- [x] Error handling and validation while processing CSV data.
 
 **Resources:**
 - [OpenCSV Library](http://opencsv.sourceforge.net/)
@@ -48,8 +48,8 @@ Learning HTTPS with java to have a webpage open on a specific server
 
 # Week 5: File Management and I/O Control
 
-- [ ] Understanding the difference between byte-oriented and character-oriented I/O in Java.
-- [ ] Handling files and directories using java.io and java.nio packages.
+- [x] Understanding the difference between byte-oriented and character-oriented I/O in Java.
+- [x] Handling files and directories using java.io and java.nio packages.
 - [ ] Managing file permissions, paths, and file attributes.
 - [ ] Reading and writing data from/to files efficiently.
 
