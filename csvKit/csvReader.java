@@ -53,6 +53,14 @@ public class csvReader {
         return this.col;
     }
 
+    public void setFile(String file){
+        this.file = file;
+    }
+
+    public void setDelimiter(String delimiter){
+        this.delimiter = delimiter;
+    }
+
     public String[][] read(){
         setSize();
         String[][] data = new String[this.row][this.col];
@@ -87,4 +95,51 @@ public class csvReader {
         }
         return newData;
     }
+    
+    public boolean isEmpty(){
+        if (this.file.equals("")){
+            return true;
+        }
+        return false;
+    }
+
+    //swaps columns and rows
+    public String[][] transpose(){
+        String[][] data = read();
+        String[][] newData = new String[this.col][this.row];
+        for (int i = 0; i < this.row; i++){
+            for (int j = 0; j < this.col; j++){
+                newData[j][i] = data[i][j];
+            }
+        }
+        return newData;
+    }
+
+    public String[] getRow(int row){
+        String[][] data = read();
+        String[] rowData = new String[this.col];
+        for (int i = 0; i < this.col; i++){
+            rowData[i] = data[row][i];
+        }
+        return rowData;
+    }
+
+    public String[] getCol(int col){
+        String[][] data = read();
+        String[] colData = new String[this.row];
+        for (int i = 0; i < this.row; i++){
+            colData[i] = data[i][col];
+        }
+        return colData;
+    }
+
+    public String getCell(int row, int col){
+        String[][] data = read();
+        return data[row][col];
+    }
+
+    
+
+
+
 }
