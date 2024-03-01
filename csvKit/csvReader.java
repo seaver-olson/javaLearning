@@ -138,8 +138,21 @@ public class csvReader {
         return data[row][col];
     }
 
-    
-
-
+    public int[] search(String value){
+        String[][] data = read();
+        int[] location = new int[2];
+        for (int i = 0; i < this.row; i++){
+            for (int j = 0; j < this.col; j++){
+                if (data[i][j].equals(value)){
+                    location[0] = i;
+                    location[1] = j;
+                    return location;
+                }
+            }
+        }
+        location[0] = -1;
+        location[1] = -1;
+        return location;
+    }
 
 }
