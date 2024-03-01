@@ -11,7 +11,6 @@ public class csvReader {
     private int row = 0;
     private int col = 0;
 
-
     public csvReader(String file, String delimiter) {
         this.file = file;
         this.delimiter = delimiter;
@@ -20,6 +19,12 @@ public class csvReader {
     public csvReader(String file) {
         this.file = file;
         this.delimiter = ",";
+    }
+    public csvReader() {
+        this.file = "";
+        this.delimiter = ",";
+        System.out.println("Warning: No file specified");
+        System.out.println("Remember to use the setFile() method to specify the file to read from");
     }
 
     //setSize() is used as the object reads the file to make the runtime more efficient
@@ -72,80 +77,4 @@ public class csvReader {
         }
         return data;
     }
-
-    public String[] readCol(int col){
-        setSize();
-        String[] data = new String[this.row];
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            String currentLine;
-            int i = 0;
-            while ((currentLine = reader.readLine()) != null) {
-                String[] values = currentLine.split(delimiter);
-                try{
-                    data[i] = values[col];
-                } catch (ArrayIndexOutOfBoundsException e){
-                    System.out.println("ArrayIndexOutOfBoundsException: " + e);
-                }
-                i++;
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return data;
-    }
-    
-    public String[] readRow(int row){
-        setSize();
-        String[] data = new String[this.col];
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            String currentLine;
-            int i = 0;
-            while ((currentLine = reader.readLine()) != null) {
-                String[] values = currentLine.split(delimiter);
-                if (i == row){
-                    for (int j = 0; j < values.length; j++) {
-                        try{
-                            data[j] = values[j];
-                        } catch (ArrayIndexOutOfBoundsException e){
-                            System.out.println("ArrayIndexOutOfBoundsException: " + e);
-                        }
-                    }
-                }
-                i++;
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return data;
-    }
-
-    public String readCell(int row, int col){
-        setSize();
-        String data = "";
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            String currentLine;
-            int i = 0;
-            while ((currentLine = reader.readLine()) != null) {
-                String[] values = currentLine.split(delimiter);
-                if (i == row){
-                    try{
-                        data = values[col];
-                    } catch (ArrayIndexOutOfBoundsException e){
-                        System.out.println("ArrayIndexOutOfBoundsException: " + e);
-                    }
-                }
-                i++;
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return data;
-    }
-
 }
