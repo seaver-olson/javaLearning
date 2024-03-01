@@ -77,4 +77,14 @@ public class csvReader {
         }
         return data;
     }
+
+    public String[][] stripHeader(String[][] data){
+        String[][] newData = new String[this.row-1][this.col];
+        for (int i = 1; i < this.row; i++){
+            for (int j = 0; j < this.col; j++){
+                newData[i-1][j] = data[i][j];
+            }
+        }
+        return newData;
+    }
 }
