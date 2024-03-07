@@ -1,115 +1,98 @@
-import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;
 
 public class csvWriter {
     private String file;
-    private String delimiter = ",";
-    private boolean a = false;
+    private boolean append;
+    private String[][] data;
     
-    public csvWriter(String file, char mode){
-        if (mode == 'a'){
-            this.a = true;
-        }
+    public csvWriter(String file, boolean append){
         this.file = file;
-        System.out.println("File, " + file + ", has been opened for writing");
+        this.append = append;
+        csvReader reader = new csvReader(file);
+        this.data = reader.read();
     }
 
     public csvWriter(String file){
         this.file = file;
-        System.out.println("Warning: No mode specified, defaulting to write mode");
+        System.out.println("Warning: No append value given, defaulting to false.");
+        this.append = false;
     }
 
-    public void setDelimiter(String delimiter){
-        this.delimiter = delimiter;
+    public csvWriter(){
+        System.out.println("Warning: No file given, defaulting to test.csv");
+        this.file = "";
+        System.out.println("Warning: No append value given, defaulting to false.");
+        this.append = false;
+    }    
+
+    public void setFile(String file){
+        this.file = file;
+        setAppend();
     }
 
-    public void setMode(char mode){
-        //this only accounts for if the user knows to put a or w, i will add error correction later
-        if (mode == 'a'){
-            this.a = true;
+    public void setAppend(boolean append){
+        this.append = append;
+        if (append){
+            csvReader reader = new csvReader(file);
+            this.data = reader.read();
         }
         else{
-            this.a = false;
+            this.data = new String[0][0];
         }
     }
 
-    public void WriteRow(String[] data){
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file, a));
-            for (int i = 0; i < data.length; i++){
-                writer.write(data[i]);
-                if (i < data.length - 1){
-                    writer.write(delimiter);
+    public void setAppend(){
+        if (this.append){
+            csvReader reader = new csvReader(file);
+            this.data = reader.read();
+        }
+        else{
+            this.data = new String[0][0];
+        }
+    }
+
+    public void writeRow(String[] row, int index){
+        //if append then add String[] to data String[][]
+        if (append){ 
+            String[][] newData = new String[this.data.length+1][this.data[0].length];
+            for (int i = 0; i < index; i++){
+                for (int j = 0; j < this.data[0].length; j++){
+                    newData[i][j] = this.data[i][j];
                 }
             }
-            writer.newLine();
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void WriteColumn(String[] data){
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file, a));
-            for (int i = 0; i < data.length; i++){
-                writer.write(data[i]);
-                writer.newLine();
+            for (int i = 0; i < row.length; i++){
+                newData[index][i] = row[i];
             }
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void WriteCell(String data){
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file, a));
-            writer.write(data);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void appendCell(String data, int row, int col){
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file, a));
-            writer.write(data);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void appendRow(String[] data, int row){
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file, a));
-            for (int i = 0; i < data.length; i++){
-                writer.write(data[i]);
-                if (i < data.length - 1){
-                    writer.write(delimiter);
+            for (int i = index; i < this.data.length; i++){
+                for (int j = 0; j < this.data[0].length; j++){
+                    newData[i+1][j] = this.data[i][j];
                 }
             }
-            writer.newLine();
+            this.data = newData;
+        }
+        else{
+            this.data = new String[1][row.length];
+        }
+        //write data to file
+        try{
+            FileWriter writer = new FileWriter(this.file);
+            for (int i = 0; i < this.data.length; i++){
+                for (int j = 0; j < this.data[0].length; j++){
+                    writer.append(this.data[i][j]);
+                    // if not last ele add comma
+                    if (j < this.data[0].length-1){
+                        writer.append(",");
+                    }
+                }
+                // if not last row add newline
+                writer.append("\n");
+            }
             writer.close();
-        } catch (IOException e) {
+        }
+        catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    public void appendColumn(String[] data, int col){
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file, a));
-            for (int i = 0; i < data.length; i++){
-                writer.write(data[i]);
-                writer.newLine();
-            }
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     
 }

@@ -1,26 +1,24 @@
-//create helper object to read csv file
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 
-public class csvReader {
+public class csvReaderGen<Item>{
     private String file;
     private String delimiter;
     private int row = 0;
     private int col = 0;
 
-    public csvReader(String file, String delimiter) {
+    public csvReaderGen(String file, String delimiter) {
         this.file = file;
         this.delimiter = delimiter;
     }
 
-    public csvReader(String file) {
+    public csvReaderGen(String file) {
         this.file = file;
         this.delimiter = ",";
     }
-    public csvReader() {
+    public csvReaderGen() {
         this.file = "";
         this.delimiter = ",";
         System.out.println("Warning: No file specified");
@@ -59,6 +57,46 @@ public class csvReader {
 
     public void setDelimiter(String delimiter){
         this.delimiter = delimiter;
+    }
+
+    //make generic version of read
+    public Object[][] read(Class<Item> dataType){
+        setSize();
+        Item[][] data = (Item[][]) new Object[this.row][this.col];
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String currentLine;
+            int i = 0;
+            while ((currentLine = reader.readLine()) != null) {
+                String[] values = currentLine.split(delimiter);
+                for (int j = 0; j < values.length; j++) {
+                    try{
+                        if (dataType == Integer.class){
+                            data[i][j] = (Item) Integer.valueOf(values[j]);
+                        }
+                        else if (dataType == Double.class){
+                            data[i][j] = (Item) Double.valueOf(values[j]);
+                        }
+                        else if (dataType == String.class){
+                            data[i][j] = (Item) values[j];
+                        }
+                        else if (dataType == Boolean.class){
+                            data[i][j] = (Item) Boolean.valueOf(values[j]);
+                        }
+                        else{
+                            System.out.println("Error: Unsupported data type");
+                        }
+                    } catch (ArrayIndexOutOfBoundsException e){
+                        System.out.println("ArrayIndexOutOfBoundsException: " + e);
+                    }
+                }
+                i++;
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return data;
     }
 
     public String[][] read(){
@@ -155,4 +193,4 @@ public class csvReader {
         location[1] = -1;
         return location;
     }
-}
+} 
