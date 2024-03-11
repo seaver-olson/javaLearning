@@ -1,6 +1,8 @@
 # Current work:
 Learning HTTPS with java to have a webpage open on a specific server
 
+Designing Autonomous System to upkeep server maintance for ftp application
+
 
 # Week 1: Socket Programming
 
