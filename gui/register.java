@@ -40,6 +40,19 @@ public class register{
         RegisterButton.addActionListener(e -> {
             String username = UsernameField.getText();
             String password = new String(PasswordField.getPassword());
+            if (password.length() < 5){
+                JOptionPane.showMessageDialog(frame, "Password must be at least 5 characters long");
+                PasswordField.setText("");
+                password = "";
+                return;
+            }
+            //requires one number uppercase letter and lowercase letter
+            else if (!(password.matches(".*[a-z].*")) || !(password.matches(".*[A-Z].*")) || !(password.matches(".*[0-9].*"))){
+                JOptionPane.showMessageDialog(frame, "Password must contain at least one uppercase letter, one lowercase letter, and one number");
+                PasswordField.setText("");
+                password = "";
+                return;
+            }
             String file = "accounts.csv";
             csvReader reader = new csvReader(file);
             String[][] data = reader.read();
@@ -60,6 +73,8 @@ public class register{
                 csvWriter writer = new csvWriter(file, true);
                 String[] row = {username, password};
                 writer.writeRow(row, reader.getRowSize());
+                File dir = new File("data/"+username);
+                dir.mkdir();//create directory for user
                 JOptionPane.showMessageDialog(frame, "Account Created, please login.");
                 frame.dispose();
                 new login();

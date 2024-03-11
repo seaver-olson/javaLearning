@@ -1,8 +1,5 @@
-
-
 import javax.swing.*;
 import java.io.*;
-
 
 public class login{
     public login(){
@@ -36,8 +33,7 @@ public class login{
             frame.dispose();
             new register();
         });
-
-
+        
         //when login button is clicked
         LoginButton.addActionListener(e -> {
             String username = UsernameField.getText();
@@ -69,7 +65,6 @@ public class login{
     }
     
     public static boolean LoginAttempt(String username, String password){
-        //get column 1 and 2 from accounts.csv
         String file = "accounts.csv";
         csvReader reader = new csvReader(file);
         String[][] data = reader.read();
