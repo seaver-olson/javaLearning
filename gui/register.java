@@ -26,7 +26,7 @@ public class register{
         RegisterButton.setBounds(150, 150, 100, 30);
         frame.add(RegisterButton);
 
-        //create small button at bottom left to go back to login page
+        //login page
         JButton BackButton = new JButton("Back");
         BackButton.setBounds(10, 230, 100, 30);
         frame.add(BackButton);
@@ -36,84 +36,40 @@ public class register{
         });
 
 
-        //when login button is clicked
+        //note: I was able to make this function so much less complex by creating my own csvKit
         RegisterButton.addActionListener(e -> {
             String username = UsernameField.getText();
             String password = new String(PasswordField.getPassword());
-            //search csv username row, if username exists clear fields and tell user to try again
-            //check username from accounts.csv first column using buffered reader
-            String[] UsernameList = new String[100];//NOTE: Change this when you release project to account for more accounts
             String file = "accounts.csv";
-            try{
-                BufferedReader br = new BufferedReader(new FileReader(file));
-                String line;
-                int i = 0;
-                while ((line = br.readLine()) != null){
-                    String[] values = line.split(",");
-                    UsernameList[i] = values[0];
-                    i++;
-                }
-                br.close();
-            }
-            catch (IOException ex){
-                ex.printStackTrace();
-            }
-            //check if username exists
-            boolean exists = false;
-            for (int i = 0; i < UsernameList.length; i++){
-                if (username.equals(UsernameList[i])){
-                    exists = true;
+            csvReader reader = new csvReader(file);
+            String[][] data = reader.read();
+            for (int i = 0; i < reader.getColSize(); i++){
+                if (username.equals(data[i][0])){
+                    JOptionPane.showMessageDialog(frame, "Username already exists");
+                    UsernameField.setText("");
+                    PasswordField.setText("");
+                    username = "";
+                    password = "";
                     break;
                 }
             }
-            if (exists){
-                JOptionPane.showMessageDialog(frame, "Username already exists");
-                UsernameField.setText("");
-                PasswordField.setText("");
-                username = "";
-                password = "";
+            if (username.equals("") || password.equals("")){
+                JOptionPane.showMessageDialog(frame, "Username or Password cannot be empty");
             }
             else{
-                //append username and password to accounts.csv
-                try{
-                    FileWriter fw = new FileWriter(file, true);
-                    BufferedWriter bw = new BufferedWriter(fw);
-                    PrintWriter pw = new PrintWriter(bw);
-                    pw.println(username + "," + password);
-                    pw.flush();
-                    pw.close();
-                    //create folder for user
-                    File dir = new File("userData/" + username);
-                    dir.mkdir();
-                    JOptionPane.showMessageDialog(frame, "Account created successfully");
-                    frame.dispose();
-                    new login();
-                }
-                catch (IOException ex){
-                    ex.printStackTrace();
-                }
+                csvWriter writer = new csvWriter(file, true);
+                String[] row = {username, password};
+                writer.writeRow(row, reader.getRowSize());
+                JOptionPane.showMessageDialog(frame, "Account Created, please login.");
+                frame.dispose();
+                new login();
             }
-
-            
-                
-            
         });
 
         frame.setLayout(null);
         frame.getContentPane().setBackground(new java.awt.Color(230, 230, 240));
 
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-    }
-    public static boolean LoginAttempt(String username, String password){
-        if (username.equals("admin") && password.equals("admin")){
-            System.out.println("Login Successful");
-            return true;
-        }
-        else{
-            System.out.println("Login Failed");
-            return false;
-        }
     }
 }

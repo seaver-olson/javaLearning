@@ -1,5 +1,8 @@
+
+
 import javax.swing.*;
 import java.io.*;
+
 
 public class login{
     public login(){
@@ -68,39 +71,14 @@ public class login{
     public static boolean LoginAttempt(String username, String password){
         //get column 1 and 2 from accounts.csv
         String file = "accounts.csv";
-        String[] UsernameList = new String[100];
-        String[] PasswordList = new String[100];
-        try{
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String line;
-            int i = 0;
-            while ((line = br.readLine()) != null){
-                String[] values = line.split(",");
-                try{
-                    UsernameList[i] = values[0];
-                    PasswordList[i] = values[1];
-                }
-                catch (ArrayIndexOutOfBoundsException ex){
-                    UsernameList[i] = "";
-                    PasswordList[i] = "";
-                }
-
-                i++;
-            }
-            br.close();
-        }
-        catch (IOException ex){
-            ex.printStackTrace();
-        }
-        //check if username and password match
-        boolean match = false;
-        for (int i = 0; i < UsernameList.length; i++){
-            if (username.equals(UsernameList[i]) && password.equals(PasswordList[i])){
-                match = true;
-                break;
+        csvReader reader = new csvReader(file);
+        String[][] data = reader.read();
+        for (int i = 0; i < reader.getRowSize(); i++){
+            if (data[i][0].equals(username) && data[i][1].equals(password)){
+                return true;
             }
         }
-        return match;
+        return false;
     }
     
 }
