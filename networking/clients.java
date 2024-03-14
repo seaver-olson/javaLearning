@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
-public class client {
+public class clients {
     private String ip;
     private int port;
     private Scanner scanner;
@@ -10,7 +10,7 @@ public class client {
     private DataOutputStream out;
     private DataInputStream in;
 
-    public client(String ip, int port){
+    public clients(String ip, int port){
         this.ip = ip;
         this.port = port;
         connectToServer(ip, port);
@@ -55,6 +55,7 @@ public class client {
     }
 
     public static void main(String[] args){
-        client c = new client("127.0.0.1", 8080);
+        //update line above to have system argument for port
+        clients c = new clients("127.0.0.1", Integer.parseInt(args[0]));
     }
 }

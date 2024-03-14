@@ -59,7 +59,7 @@ public class csvReaderGen<Item>{
         this.delimiter = delimiter;
     }
 
-    //make generic version of read
+    @SuppressWarnings("unchecked")
     public Object[][] read(Class<Item> dataType){
         setSize();
         Item[][] data = (Item[][]) new Object[this.row][this.col];
@@ -124,8 +124,9 @@ public class csvReaderGen<Item>{
         return data;
     }
 
-    public String[][] stripHeader(String[][] data){
-        String[][] newData = new String[this.row-1][this.col];
+
+    public Object[][] stripHeader(Object[][] data){
+        Object[][] newData = new Object[this.row-1][this.col];
         for (int i = 1; i < this.row; i++){
             for (int j = 0; j < this.col; j++){
                 newData[i-1][j] = data[i][j];
@@ -141,10 +142,10 @@ public class csvReaderGen<Item>{
         return false;
     }
 
-    //swaps columns and rows
-    public String[][] transpose(){
-        String[][] data = read();
-        String[][] newData = new String[this.col][this.row];
+    //transpose means to swap columns and rows
+    public Object[][] transpose(){
+        Object[][] data = read();
+        Object[][] newData = new Object[this.col][this.row];
         for (int i = 0; i < this.row; i++){
             for (int j = 0; j < this.col; j++){
                 newData[j][i] = data[i][j];
@@ -153,26 +154,26 @@ public class csvReaderGen<Item>{
         return newData;
     }
 
-    public String[] getRow(int row){
-        String[][] data = read();
-        String[] rowData = new String[this.col];
+    public Object[] getRow(int row){
+        Object[][] data = read();
+        Object[] rowData = new Object[this.col];
         for (int i = 0; i < this.col; i++){
             rowData[i] = data[row][i];
         }
         return rowData;
     }
 
-    public String[] getCol(int col){
-        String[][] data = read();
-        String[] colData = new String[this.row];
+    public Object[] getCol(int col){
+        Object[][] data = read();
+        Object[] colData = new Object[this.row];
         for (int i = 0; i < this.row; i++){
             colData[i] = data[i][col];
         }
         return colData;
     }
 
-    public String getCell(int row, int col){
-        String[][] data = read();
+    public Object getCell(int row, int col){
+        Object[][] data = read();
         return data[row][col];
     }
 

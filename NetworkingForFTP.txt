@@ -1,0 +1,41 @@
+Notes for Server
+
+    Server Shell accessable through Server program but requires password and key to be in EXPORT
+
+    Shell commands
+        - log <option>
+                -a [displays all logs from server]
+
+                --filter
+                    -u <username> [displays all logs involving a user]
+                    -i <username> <username> [displays all interactions between two users]
+                    -d <count> [displays last x amount of logs]
+                    -t <MONTH/DAY/YEAR> [displays logs on certain day]
+
+                -rm <log ID> [removes log at log ID]
+                -r [resets log]
+
+                --export <optional:filename> [exports to log.txt or filename]
+
+        - users [displays all users]
+            - ban <username> [bans user from server]
+            - unban <username> [unbans user from server]
+
+        - start [start server]
+
+        - shutdown [shuts down server]
+
+        - help [displays all commands]
+
+        - clear [clears the console]
+                
+        - whisper <user> <message> [sends user a message]
+
+        - broadcast <message> [sends all active users a message]
+
+        
+        print("Printing the flag...")
+        print("picoCTF{t3@mw0rk_", end='')
+        print("m@k3s_th3_dr3@m_", end='')
+        print("w0rk_7ae8dd33}")
+
