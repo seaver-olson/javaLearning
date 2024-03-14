@@ -126,3 +126,5 @@ public class system {
         n.startServer();
     }
 }
+//how to force git push
+//A: git push -f origin master
