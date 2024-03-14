@@ -108,4 +108,21 @@ public class system {
     public String toString(){
         return "IP: " + this.IP + " Port: " + this.port;
     }
+
+    public static void main(String[] args){
+        system n = new system();
+        if (args.length < 2){
+            if (!(args.length < 1)){
+                try {
+                    n = new system(Integer.parseInt(args[0]));
+                } catch (NumberFormatException nfe) {
+                    n = new system(args[0]);
+            }
+            }
+        }   
+        else{
+            n = new system(args[0], Integer.parseInt(args[1]));
+        }
+        n.startServer();
+    }
 }
