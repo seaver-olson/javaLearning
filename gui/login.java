@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.io.*;
 
-public class login{
+public class login extends clients{
     public login(){
         JFrame frame = new JFrame("Java GUI Test");
         frame.setSize(400, 300);
@@ -33,13 +33,14 @@ public class login{
             frame.dispose();
             new register();
         });
-        
+
         //when login button is clicked
         LoginButton.addActionListener(e -> {
             String username = UsernameField.getText();
             String password = new String(PasswordField.getPassword());
             System.out.println("Username: " + username);
             System.out.println("Password: " + password);
+            
             if (LoginAttempt(username, password)){
                 //open new window
                 JOptionPane.showMessageDialog(frame, "Login Successful");
