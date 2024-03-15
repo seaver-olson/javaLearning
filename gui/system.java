@@ -64,13 +64,7 @@ public class system {
                     if (message.equals("exit")){
                         break;
                     }
-                    if (message.equals("login")){
-                        out.writeUTF("generating login page");
-                    }
-                    if (message.equals("register")){
-                        out.writeUTF("generating register page");
-                    }
-                    if (message.contains("loginAttempt")){
+                    else if (message.contains("loginAttempt")){
                         String[] loginInfo = message.split(":");
                         String username = loginInfo[1];
                         String password = loginInfo[2];

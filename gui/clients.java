@@ -117,9 +117,9 @@ public class clients {
                 out.writeUTF(message);
                 if (message.equals("exit")) {
                     out.writeUTF("Client has disconnected");
-                    out.close(); // Close the output stream
-                    in.close(); // Close the input stream
-                    clientSocket.close(); // Close the socket
+                    out.close(); 
+                    in.close(); 
+                    clientSocket.close();
                     System.exit(0);
                 }
                 else if (message.equals("login")){
@@ -129,7 +129,6 @@ public class clients {
                     new register();
                 }
                 else{
-                    //print server message
                     System.out.println("Server:" + in.readUTF());
                 }
             }
