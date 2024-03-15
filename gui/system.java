@@ -61,13 +61,13 @@ public class system {
                     String message = in.readUTF();
                     //command line input
                     System.out.println("Client[" + socket.getInetAddress() + " : " + socket.getPort() +"]: " + message);
-                    if (message == "exit"){
+                    if (message.equals("exit")){
                         break;
                     }
-                    if (message == "login"){
+                    if (message.equals("login")){
                         out.writeUTF("generating login page");
                     }
-                    if (message == "register"){
+                    if (message.equals("register")){
                         out.writeUTF("generating register page");
                     }
                     if (message.contains("loginAttempt")){
@@ -102,21 +102,14 @@ public class system {
         }
     }
     public void startServer(){
-        ConnectionThread[] threads = new ConnectionThread[10];
-        //listen for connections if connection found pass it to a new thread
         try{
+            ServerSocket server = new ServerSocket(this.port);
+            System.out.println("Server started on " + this.IP + " on port " + this.port);
             while (true){
-                    for (int i = 0; i < threads.length; i++){
-                        if (threads[i] == null || threads[i].isReadyToDie()){
-                            System.out.println("Thread " + i + " is ready to serve");
-                            int newPort = port + i;
-                            ServerSocket server = new ServerSocket(newPort);
-                            threads[i] = new ConnectionThread(server.accept());
-                            threads[i].start();
-                        }
-                        
-                    }
-                }
+                Socket socket = server.accept();
+                ConnectionThread connection = new ConnectionThread(socket);
+                connection.start();
+            }
         } catch (Exception e){
             System.out.println("Error: " + e);
         }

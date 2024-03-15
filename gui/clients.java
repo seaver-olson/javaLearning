@@ -118,7 +118,9 @@ public class clients {
                 if (message.equals("exit")) {
                     out.writeUTF("Client has disconnected");
                     out.close(); // Close the output stream
-                    break;
+                    in.close(); // Close the input stream
+                    clientSocket.close(); // Close the socket
+                    System.exit(0);
                 }
                 else if (message.equals("login")){
                     new login();
