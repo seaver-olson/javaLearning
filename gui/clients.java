@@ -36,78 +36,6 @@ public class clients {
         }
     }
 
-    public class login{
-        public login(){
-            JFrame frame = new JFrame("Login Page");
-            frame.setSize(400, 300);
-
-            JLabel UsernameLabel = new JLabel("Username");
-            UsernameLabel.setBounds(50, 50, 100, 30);
-            frame.add(UsernameLabel);
-
-            JTextField UsernameField = new JTextField();
-            UsernameField.setBounds(150, 50, 200, 30);
-            frame.add(UsernameField);
-
-            JLabel PasswordLabel = new JLabel("Password");
-            PasswordLabel.setBounds(50, 100, 100, 30);
-            frame.add(PasswordLabel);
-
-            JPasswordField PasswordField = new JPasswordField();
-            PasswordField.setBounds(150, 100, 200, 30);
-            frame.add(PasswordField);
-
-            JButton LoginButton = new JButton("Login");
-            LoginButton.setBounds(150, 150, 100, 30);
-            frame.add(LoginButton);
-
-            JButton RegisterButton = new JButton("Register");
-            RegisterButton.setBounds(250, 230, 100, 30);
-            frame.add(RegisterButton);
-            RegisterButton.addActionListener(e -> {
-                frame.dispose();
-                new register();
-            });
-
-            //when login button is clicked
-            LoginButton.addActionListener(e -> {
-                String username = UsernameField.getText();
-                String password = new String(PasswordField.getPassword());
-                try{
-                    out.writeUTF("loginAttempt:" + username + ":" + password);
-                    
-                    String reply = in.readUTF();
-                    if (reply.contains("true")){
-                        JOptionPane.showMessageDialog(frame, "Login Successful");
-                        frame.dispose();
-                        new fetchPage(username);
-                    }
-                    else if (reply.contains("false")){
-                        JOptionPane.showMessageDialog(frame, "Invalid Username or Password");
-                        UsernameField.setText("");
-                        PasswordField.setText("");
-                        username = "";
-                        password = "";
-                    }
-                    else{
-                        System.out.println("Error: " + reply);
-                    }
-
-                } catch(Exception ex){
-                    System.out.println(ex);
-                }
-            });
-
-            frame.setLayout(null);
-            frame.getContentPane().setBackground(new java.awt.Color(230, 230, 240));
-
-
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
-        }
-        
-    }
-
     //open chat with server
     public void chatWithServer(){
         scanner = new Scanner(System.in);
@@ -123,10 +51,10 @@ public class clients {
                     System.exit(0);
                 }
                 else if (message.equals("login")){
-                    new login();
+                    new login(out, in);
                 }
                 else if (message.equals("register")){
-                    new register();
+                    new register(out, in);
                 }
                 else{
                     System.out.println("Server:" + in.readUTF());

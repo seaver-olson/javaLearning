@@ -1,9 +1,10 @@
 import javax.swing.*;
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
-public class login extends clients{
-    public login(){
-        JFrame frame = new JFrame("Java GUI Test");
+public class login{
+    public login(DataOutputStream out, DataInputStream in){
+        JFrame frame = new JFrame("Login Page");
         frame.setSize(400, 300);
 
         JLabel UsernameLabel = new JLabel("Username");
@@ -31,29 +32,36 @@ public class login extends clients{
         frame.add(RegisterButton);
         RegisterButton.addActionListener(e -> {
             frame.dispose();
-            new register();
+            new register(out, in);
         });
 
         //when login button is clicked
         LoginButton.addActionListener(e -> {
             String username = UsernameField.getText();
             String password = new String(PasswordField.getPassword());
-            System.out.println("Username: " + username);
-            System.out.println("Password: " + password);
-            
-            if (LoginAttempt(username, password)){
-                //open new window
-                JOptionPane.showMessageDialog(frame, "Login Successful");
-                frame.dispose();
-                new fetchPage(username);
-            }
-            else 
-            {
-                JOptionPane.showMessageDialog(frame, "Invalid Username or Password");
-                UsernameField.setText("");
-                PasswordField.setText("");
-                username = "";
-                password = "";
+            try{
+                out.writeUTF("loginAttempt:" + username + ":" + password);
+                
+                String reply = in.readUTF();
+                reply = in.readUTF();
+                if (reply.contains("true")){
+                    JOptionPane.showMessageDialog(frame, "Login Successful");
+                    frame.dispose();
+                    new fetchPage(username);
+                }
+                else if (reply.contains("false")){
+                    JOptionPane.showMessageDialog(frame, "Invalid Username or Password");
+                    UsernameField.setText("");
+                    PasswordField.setText("");
+                    username = "";
+                    password = "";
+                }
+                else{
+                    System.out.println("Error: " + reply);
+                }
+
+            } catch(Exception ex){
+                System.out.println(ex);
             }
         });
 
@@ -63,18 +71,6 @@ public class login extends clients{
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-    }
-    
-    public static boolean LoginAttempt(String username, String password){
-        String file = "accounts.csv";
-        csvReader reader = new csvReader(file);
-        String[][] data = reader.read();
-        for (int i = 0; i < reader.getRowSize(); i++){
-            if (data[i][0].equals(username) && data[i][1].equals(password)){
-                return true;
-            }
-        }
-        return false;
     }
     
 }
