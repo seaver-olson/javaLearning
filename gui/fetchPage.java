@@ -1,7 +1,9 @@
 import javax.swing.*;
+import java.io.DataOutputStream;
+import java.io.DataInputStream;
 
 public class fetchPage{
-    public fetchPage(String username){
+    public fetchPage(String username, DataOutputStream out, DataInputStream in){
         JFrame frame = new JFrame(username+"'s Page");
         frame.setSize(400, 300);
 
@@ -15,7 +17,7 @@ public class fetchPage{
         frame.add(FetchButton);
         FetchButton.addActionListener(e -> {
             frame.dispose();
-            new fetchFile(username);
+            new fetchFile(username, out, in);
         });
 
         JButton StoreButton = new JButton("Store File");

@@ -47,7 +47,7 @@ public class login{
                 if (reply.contains("true")){
                     JOptionPane.showMessageDialog(frame, "Login Successful");
                     frame.dispose();
-                    new fetchPage(username);
+                    new fetchPage(username, out, in);
                 }
                 else if (reply.contains("false")){
                     JOptionPane.showMessageDialog(frame, "Invalid Username or Password");

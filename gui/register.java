@@ -48,7 +48,7 @@ public class register{
                 if (reply.contains("true")){
                     JOptionPane.showMessageDialog(frame, "Registration Successful");
                     frame.dispose();
-                    new fetchPage(username);
+                    new fetchPage(username, out, in);
                 }
                 else if (reply.contains("Failed")){
                     if (reply.contains("Empty")){
