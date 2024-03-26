@@ -1,6 +1,5 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 
 //handles logging for server
 public class logging {
@@ -14,10 +13,27 @@ public class logging {
     }
 
     public void log(String message, String IP, String port){
+        if (IP.equals("") || IP.equals(null)){
+            log(message);
+        }
+        else if (message.equals("") || message.equals(null)){
+            return;
+        }
+        IP = IP.substring(1);
         String time = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
         String[] log = {time, IP, port, message};
-        csvWriter writer = new csvWriter(this.file);
-        writer.writeRow(log, new csvReader(this.file).read().length);
+        csvWriter writer = new csvWriter(this.file, true);
+        writer.writeRow(log, new csvReader(this.file).read().length-1);
+        System.out.println("[" + IP + ":" + port + "]: " + message);
+    }
+
+    public void log(String message){
+        String IP = "Unknown";
+        String time = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        String[] log = {time, IP, "Unknown", message};
+        csvWriter writer = new csvWriter(this.file, true);
+        writer.writeRow(log);
+        System.out.println("[" + IP + ":" + "Unknown" + "]: " + message);
     }
     
     public String[][] read(){
@@ -25,24 +41,4 @@ public class logging {
         return reader.read();
     }
 
-    public String[][] getBy(String Type, String value){
-        HashMap<String, Integer> Types = new HashMap<>();
-        Types.put("Time", 0);
-        Types.put("IP", 1);
-        Types.put("Port", 2);
-        Types.put("Message", 3);
-        int index = Types.get(Type);
-        String[][] logs = read();
-        String[][] results = new String[0][0];
-        for (int i = 0; i < logs.length; i++){
-            if (logs[i][index].equals(value)){
-                String[][] newResults = new String[results.length+1][results[0].length];
-                for (int j = 0; j < results[0].length; j++){
-                    newResults[results.length][j] = logs[i][j];
-                }
-                results = newResults;
-            }
-        }
-        return results;
-    }
 }

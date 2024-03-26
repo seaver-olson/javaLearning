@@ -6,6 +6,7 @@ public class connectionThread extends Thread{
     private boolean readyToDie = false;
     private DataOutputStream out;//output stream
     private DataInputStream in;//input stream
+    private logging log = new logging();
 
     public connectionThread(Socket socket){
         this.socket = socket;
@@ -42,7 +43,7 @@ public class connectionThread extends Thread{
             while (true){
                 String message = in.readUTF();
                 //command line input
-                System.out.println("Client[" + socket.getInetAddress() + " : " + socket.getPort() +"]: " + message);
+                log.log(message, socket.getInetAddress().toString(), Integer.toString(socket.getPort()));
                 if (message.equals("exit")){
                     break;
                 }
@@ -50,10 +51,8 @@ public class connectionThread extends Thread{
                     String[] loginInfo = message.split(":");
                     String username = loginInfo[1];
                     String password = loginInfo[2];
-                    System.out.println(username);
-                    System.out.println(password);
                     if (LoginAttempt(username, password)){
-                        System.out.println("Successful Login Attempt from " + socket.getInetAddress() + " on port " + socket.getPort() + " to account "  + username);
+                        log.log("Successful Login Attempt from " + socket.getInetAddress() + " on port " + socket.getPort() + " to account "  + username, socket.getInetAddress().toString(), Integer.toString(socket.getPort()));
                         out.writeUTF("true");
                     }
                     else{
@@ -61,13 +60,11 @@ public class connectionThread extends Thread{
                     }
                 }
                 else if (message.contains("registerAttempt")){
-                    System.out.println("Now processing Register Attempt");
                     String[] registerInfo = message.split(":");
                     String username = registerInfo[1];
                     String password = registerInfo[2];
                     if (isUnique(username)){
                         if (username.equals("") || password.equals("")){
-            
                             out.writeUTF("Failed:Empty");
                         }
                         else if (password.length() < 5){
@@ -83,7 +80,7 @@ public class connectionThread extends Thread{
                             writer.writeRow(row, new csvReader(file).read().length);
                             File dir = new File("data/"+username);
                             dir.mkdir();//create directory for user
-                            System.out.println("Account Created for " + username + " by " + socket.getInetAddress() + " on port " + socket.getPort());
+                            log.log("Account Created for " + username + " by " + socket.getInetAddress() + " on port " + socket.getPort(), socket.getInetAddress().toString(), Integer.toString(socket.getPort()));
                             out.writeUTF("true");
                         }
                     }
@@ -102,7 +99,7 @@ public class connectionThread extends Thread{
 
 
         } catch (Exception e){
-            System.out.println("Error: " + e);
+            log.log("Error: " + e, socket.getInetAddress().toString(), Integer.toString(socket.getPort()));
             
         }
     }

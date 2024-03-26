@@ -8,8 +8,6 @@ import java.io.IOException;
 public class csvReader {
     private String file;
     private String delimiter;
-    private int row = 0;
-    private int col = 0;
 
     public csvReader(String file, String delimiter) {
         this.file = file;
@@ -27,107 +25,86 @@ public class csvReader {
         System.out.println("Remember to use the setFile() method to specify the file to read from");
     }
 
-    //setSize() is used as the object reads the file to make the runtime more efficient
-    //however later it'd like to test weither more memory is used with multiple row,col vars or if the speed up is worth it
-    public void setSize(){
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            String currentLine;
-            //check if line is not empty, if not empty, split the line by delimiter
-            while ((currentLine = reader.readLine()) != null) {
-                String[] values = currentLine.split(delimiter);
-                this.col = values.length;
-                this.row++;
-            }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-    }
-
-    public int getRowSize(){
-        return this.row;
-    }
-    public int getColSize(){
-        return this.col;
-    }
-
-    public void setFile(String file){
-        this.file = file;
-    }
-
-    public void setDelimiter(String delimiter){
-        this.delimiter = delimiter;
-    }
-
     public String[][] read(){
-        setSize();
-        String[][] data = new String[this.row][this.col];
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            String currentLine;
-            int i = 0;
-            while ((currentLine = reader.readLine()) != null) {
-                String[] values = currentLine.split(delimiter);
-                for (int j = 0; j < values.length; j++) {
-                    try{
-                        data[i][j] = values[j];
-                    } catch (ArrayIndexOutOfBoundsException e){
-                        System.out.println("ArrayIndexOutOfBoundsException: " + e);
+        String[][] data = new String[0][0];
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(this.file));
+            String line = br.readLine();
+            int row = 0;
+            while (line != null){
+                String[] values = line.split(this.delimiter);
+                String[][] newData = new String[row+1][values.length];
+                for (int i = 0; i < row; i++){
+                    for (int j = 0; j < values.length; j++){
+                        newData[i][j] = data[i][j];
                     }
                 }
-                i++;
+                for (int i = 0; i < values.length; i++){
+                    newData[row][i] = values[i];
+                }
+                data = newData;
+                row++;
+                line = br.readLine();
             }
-            reader.close();
-        } catch (IOException e) {
+            br.close();
+        } catch (IOException e){
             e.printStackTrace();
         }
         return data;
     }
 
-    public String[][] stripHeader(String[][] data){
-        String[][] newData = new String[this.row-1][this.col];
-        for (int i = 1; i < this.row; i++){
-            for (int j = 0; j < this.col; j++){
-                newData[i-1][j] = data[i][j];
-            }
+    public int getColSize(){
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(this.file));
+            String line = br.readLine();
+            br.close();
+            return line.split(this.delimiter).length;
+        } catch (IOException e){
+            e.printStackTrace();
         }
-        return newData;
+        return -1;
     }
-    
+
+    public int getRowSize(){
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(this.file));
+            int row = 0;
+            while (br.readLine() != null){
+                row++;
+            }
+            br.close();
+            return row;
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public boolean isEmpty(){
         if (this.file.equals("")){
             return true;
         }
         return false;
     }
-
-    //swaps columns and rows
     public String[][] transpose(){
         String[][] data = read();
-        String[][] newData = new String[this.col][this.row];
-        for (int i = 0; i < this.row; i++){
-            for (int j = 0; j < this.col; j++){
+        String[][] newData = new String[getColSize()][getRowSize()];
+        for (int i = 0; i < getRowSize(); i++){
+            for (int j = 0; j < getColSize(); j++){
                 newData[j][i] = data[i][j];
             }
         }
         return newData;
     }
-
     public String[] getRow(int row){
         String[][] data = read();
-        String[] rowData = new String[this.col];
-        for (int i = 0; i < this.col; i++){
-            rowData[i] = data[row][i];
-        }
-        return rowData;
+        return data[row];
     }
 
     public String[] getCol(int col){
         String[][] data = read();
-        String[] colData = new String[this.row];
-        for (int i = 0; i < this.row; i++){
+        String[] colData = new String[getColSize()];
+        for (int i = 0; i < getColSize(); i++){
             colData[i] = data[i][col];
         }
         return colData;
@@ -140,19 +117,13 @@ public class csvReader {
 
     public int[] search(String value){
         String[][] data = read();
-        int[] location = new int[2];
-        for (int i = 0; i < this.row; i++){
-            for (int j = 0; j < this.col; j++){
+        for (int i = 0; i < getRowSize(); i++){
+            for (int j = 0; j < getColSize(); j++){
                 if (data[i][j].equals(value)){
-                    location[0] = i;
-                    location[1] = j;
-                    return location;
+                    return new int[]{i, j};
                 }
             }
         }
-        //if location is not found, return -1,-1
-        location[0] = -1;
-        location[1] = -1;
-        return location;
+        return new int[]{-1, -1};
     }
 }

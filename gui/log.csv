@@ -1,1 +1,10 @@
-12,127.0.0.1,78,hello world
+2024.03.26.13.02.38,127.0.0.1,53918,login
+2024.03.26.13.02.57,127.0.0.1,53918,loginAttempt:solson16:password123
+2024.03.26.13.03.29,127.0.0.1,53920,login
+2024.03.26.13.03.35,127.0.0.1,53920,loginAttempt:solson16:password123
+2024.03.26.13.03.35,127.0.0.1,53920,Successful Login Attempt from /127.0.0.1 on port 53920 to account solson16
+2024.03.26.13.04.54,127.0.0.1,53925,register
+2024.03.26.13.05.04,127.0.0.1,53925,registerAttempt:newUser28:Password123
+2024.03.26.13.05.04,127.0.0.1,53925,Account Created for newUser28 by /127.0.0.1 on port 53925
+2024.03.26.13.05.10,127.0.0.1,53925,Error: java.io.EOFException
+2024.03.26.13.02.57,127.0.0.1,53918,Successful Login Attempt from /127.0.0.1 on port 53918 to account solson16
