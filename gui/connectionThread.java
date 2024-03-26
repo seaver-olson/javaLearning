@@ -53,10 +53,10 @@ public class connectionThread extends Thread{
                     String password = loginInfo[2];
                     if (LoginAttempt(username, password)){
                         log.log("Successful Login Attempt from " + socket.getInetAddress() + " on port " + socket.getPort() + " to account "  + username, socket.getInetAddress().toString(), Integer.toString(socket.getPort()));
-                        out.writeUTF("true");
+                        out.writeUTF("LOGIN:SUCCESS");
                     }
                     else{
-                        out.writeUTF("false");
+                        out.writeUTF("LOGIN:FAILED");
                     }
                 }
                 else if (message.contains("registerAttempt")){

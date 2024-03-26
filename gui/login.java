@@ -3,6 +3,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 
 public class login{
+    private logging log = new logging();
     public login(DataOutputStream out, DataInputStream in){
         JFrame frame = new JFrame("Login Page");
         frame.setSize(400, 300);
@@ -44,12 +45,12 @@ public class login{
                 
                 String reply = in.readUTF();
                 reply = in.readUTF();
-                if (reply.contains("true")){
+                if (reply.contains("LOGIN:SUCCESS")){
                     JOptionPane.showMessageDialog(frame, "Login Successful");
                     frame.dispose();
                     new fetchPage(username, out, in);
                 }
-                else if (reply.contains("false")){
+                else if (reply.contains("LOGIN:FAILED")){
                     JOptionPane.showMessageDialog(frame, "Invalid Username or Password");
                     UsernameField.setText("");
                     PasswordField.setText("");
@@ -57,11 +58,11 @@ public class login{
                     password = "";
                 }
                 else{
-                    System.out.println("Error: " + reply);
+                    log.log("Error during Login Attempt: " + reply);
                 }
 
             } catch(Exception ex){
-                System.out.println(ex);
+                log.log("Error: " + ex);
             }
         });
 

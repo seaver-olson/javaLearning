@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 
 public class fetchPage{
     public fetchPage(String username, DataOutputStream out, DataInputStream in){
+        logging log = new logging();
         JFrame frame = new JFrame(username+"'s Page");
         frame.setSize(400, 300);
 
@@ -16,8 +17,13 @@ public class fetchPage{
         FetchButton.setBounds(150, 100, 100, 30);
         frame.add(FetchButton);
         FetchButton.addActionListener(e -> {
+            try{
+                new fetchFile(username, out, in);
+            }
+            catch(Exception ex){
+                log.log("Error while fetching file", "localhost", "8080");
+            }
             frame.dispose();
-            new fetchFile(username, out, in);
         });
 
         JButton StoreButton = new JButton("Store File");

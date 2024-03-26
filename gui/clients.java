@@ -2,12 +2,6 @@ import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 public class clients {
     private String ip;

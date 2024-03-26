@@ -1,10 +1,6 @@
 import java.net.Socket;
-
 import javax.swing.JOptionPane;
-
 import java.net.ServerSocket;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.File;
 
 public class system {
@@ -57,6 +53,7 @@ public class system {
         try{
             ServerSocket server = new ServerSocket(this.port);
             System.out.println("Server started on " + this.IP + " on port " + this.port);
+            
             while (true){
                 Socket socket = server.accept();
                 connectionThread connection = new connectionThread(socket);
