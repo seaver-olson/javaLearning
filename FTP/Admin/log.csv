@@ -74,4 +74,8 @@
 2024.03.27.14.06.55,127.0.0.1,54665,Successful Login Attempt from /127.0.0.1 on port 54665 to account solson16
 2024.03.27.14.07.00,127.0.0.1,54665,fetchFile:solson16:download.jpeg
 2024.03.27.14.07.03,127.0.0.1,54665,fetchFile:solson16:dataStorage.csv
+2024.03.27.14.27.49,127.0.0.1,54789,login
+2024.03.27.14.27.55,127.0.0.1,54789,loginAttempt:solson16:password123
+2024.03.27.14.27.55,127.0.0.1,54789,Successful Login Attempt from /127.0.0.1 on port 54789 to account solson16
+2024.03.27.14.28.07,127.0.0.1,54789,Error: java.io.EOFException
 2024.03.26.13.02.57,127.0.0.1,53918,Successful Login Attempt from /127.0.0.1 on port 53918 to account solson16
