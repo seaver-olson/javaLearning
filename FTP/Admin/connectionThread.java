@@ -59,6 +59,49 @@ public class connectionThread extends Thread{
                         out.writeUTF("LOGIN:FAILED");
                     }
                 }
+                else if (message.contains("FetchDir")){
+                    try{
+                        String username = message.split(":")[1];
+                        File dir = new File("/Users/Admin/Desktop/Projects/data/" + username + "/");
+                        String[] files = dir.list();
+                        if (files == null){
+                            log.log("Error: No files found for " + username, socket.getInetAddress().toString(), Integer.toString(socket.getPort()));
+                            int x = 5/ 0;//kill process
+                        }
+
+                        StringBuilder sb = new StringBuilder("Directory:");
+                        for (int i = 0; i < files.length; i++){
+                            if (i == files.length - 1){
+                                sb.append(files[i]);
+                            }
+                            else{
+                                sb.append(files[i]);
+                                sb.append(",");
+                            }
+                        }
+                        out.writeUTF(sb.toString());
+                    }
+                    catch(Exception e){
+                        out.writeUTF("Error: " + e);
+                    }
+                }
+                else if (message.contains("FetchFile")){
+                    String[] fileInfo = message.split(":");
+                    String username = fileInfo[1];
+                    String fileName = fileInfo[2];
+                    System.out.println("Fetching File: " + fileName + " for " + username);
+                    File file = new File("/Users/Admin/Desktop/Projects/data" + username + "/" + fileName);
+                    if (file.exists()){
+                        FileInputStream fileIn = new FileInputStream(file);
+                        byte[] fileData = new byte[(int) file.length()];
+                        fileIn.read(fileData);
+                        out.write(fileData);
+                        fileIn.close();
+                    }
+                    else{
+                        out.writeUTF("false");
+                    }
+                }
                 else if (message.contains("registerAttempt")){
                     String[] registerInfo = message.split(":");
                     String username = registerInfo[1];

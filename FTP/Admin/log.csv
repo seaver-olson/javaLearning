@@ -78,4 +78,123 @@
 2024.03.27.14.27.55,127.0.0.1,54789,loginAttempt:solson16:password123
 2024.03.27.14.27.55,127.0.0.1,54789,Successful Login Attempt from /127.0.0.1 on port 54789 to account solson16
 2024.03.27.14.28.07,127.0.0.1,54789,Error: java.io.EOFException
+2024.03.27.14.44.50,127.0.0.1,54815,login
+2024.03.27.14.45.04,127.0.0.1,54815,loginAttempt:solson16:passsword123
+2024.03.27.14.45.14,127.0.0.1,54817,Error: java.io.EOFException
+2024.03.27.14.46.38,127.0.0.1,54818,login
+2024.03.27.14.46.45,127.0.0.1,54818,loginAttempt:solson16:password123
+2024.03.27.14.46.45,127.0.0.1,54818,Successful Login Attempt from /127.0.0.1 on port 54818 to account solson16
+2024.03.27.14.47.00,127.0.0.1,54818,fetchFile:solson16:pset62.java
+2024.03.27.14.51.23,127.0.0.1,54818,login
+2024.03.27.14.51.38,127.0.0.1,54818,loginAttempt:whonig:comp271
+2024.03.27.14.51.38,127.0.0.1,54818,Successful Login Attempt from /127.0.0.1 on port 54818 to account whonig
+2024.03.27.14.52.08,127.0.0.1,54818,login
+2024.03.27.14.52.13,127.0.0.1,54818,loginAttempt:solson16:password123
+2024.03.27.14.52.13,127.0.0.1,54818,Successful Login Attempt from /127.0.0.1 on port 54818 to account solson16
+2024.04.04.11.41.40,127.0.0.1,56795,login
+2024.04.04.11.41.50,127.0.0.1,56795,loginAttempt:solson16:Password123
+2024.04.04.11.41.58,127.0.0.1,56795,loginAttempt:solson16:password123
+2024.04.04.11.41.58,127.0.0.1,56795,Successful Login Attempt from /127.0.0.1 on port 56795 to account solson16
+2024.04.04.11.42.04,127.0.0.1,56795,Error: java.io.EOFException
+2024.04.04.11.42.11,127.0.0.1,56796,login
+2024.04.04.11.42.18,127.0.0.1,56796,loginAttempt:solson16:password123
+2024.04.04.11.42.18,127.0.0.1,56796,Successful Login Attempt from /127.0.0.1 on port 56796 to account solson16
+2024.04.04.11.42.20,127.0.0.1,56796,FetchDir:solson16
+2024.04.04.11.42.20,127.0.0.1,56796,Error: java.lang.NullPointerException: Cannot read the array length because "<local6>" is null
+2024.04.04.11.44.17,127.0.0.1,56799,login
+2024.04.04.11.44.24,127.0.0.1,56799,loginAttempt:solson16:password123
+2024.04.04.11.44.24,127.0.0.1,56799,Successful Login Attempt from /127.0.0.1 on port 56799 to account solson16
+2024.04.04.11.44.27,127.0.0.1,56799,FetchDir:solson16
+2024.04.04.11.44.27,127.0.0.1,56799,Error: java.lang.NullPointerException: Cannot read the array length because "<local6>" is null
+2024.04.04.11.46.48,127.0.0.1,56828,login
+2024.04.04.11.46.54,127.0.0.1,56828,loginAttempt:solson16:password123
+2024.04.04.11.46.54,127.0.0.1,56828,Successful Login Attempt from /127.0.0.1 on port 56828 to account solson16
+2024.04.04.11.46.56,127.0.0.1,56828,FetchDir:solson16
+2024.04.04.11.47.33,127.0.0.1,56833,login
+2024.04.04.11.47.40,127.0.0.1,56833,loginAttempt:solson16:password123
+2024.04.04.11.47.40,127.0.0.1,56833,Successful Login Attempt from /127.0.0.1 on port 56833 to account solson16
+2024.04.04.11.47.42,127.0.0.1,56833,FetchDir:solson16
+2024.04.04.11.48.16,127.0.0.1,56839,login
+2024.04.04.11.48.21,127.0.0.1,56839,loginAttempt:solson16:password123
+2024.04.04.11.48.22,127.0.0.1,56839,Successful Login Attempt from /127.0.0.1 on port 56839 to account solson16
+2024.04.04.11.48.23,127.0.0.1,56839,FetchDir:solson16
+2024.04.04.11.48.47,127.0.0.1,56839,Error: java.io.EOFException
+2024.04.04.11.48.56,127.0.0.1,56843,login
+2024.04.04.11.49.03,127.0.0.1,56843,loginAttempt:solson16:password123
+2024.04.04.11.49.03,127.0.0.1,56843,Successful Login Attempt from /127.0.0.1 on port 56843 to account solson16
+2024.04.04.11.49.05,127.0.0.1,56843,FetchDir:solson16
+2024.04.04.11.49.33,127.0.0.1,56846,login
+2024.04.04.11.49.46,127.0.0.1,56846,loginAttempt:solson16:password123
+2024.04.04.11.49.46,127.0.0.1,56846,Successful Login Attempt from /127.0.0.1 on port 56846 to account solson16
+2024.04.04.11.49.48,127.0.0.1,56846,FetchDir:solson16
+2024.04.04.11.51.35,127.0.0.1,56858,login
+2024.04.04.11.51.41,127.0.0.1,56858,loginAttempt:solson16:password123
+2024.04.04.11.51.41,127.0.0.1,56858,Successful Login Attempt from /127.0.0.1 on port 56858 to account solson16
+2024.04.04.11.51.44,127.0.0.1,56858,FetchDir:solson16
+2024.04.04.11.52.48,127.0.0.1,56863,login
+2024.04.04.11.52.54,127.0.0.1,56863,loginAttempt:solson16:password123
+2024.04.04.11.52.54,127.0.0.1,56863,Successful Login Attempt from /127.0.0.1 on port 56863 to account solson16
+2024.04.04.11.52.58,127.0.0.1,56863,FetchDir:solson16
+2024.04.04.11.55.08,127.0.0.1,56891,login
+2024.04.04.11.55.15,127.0.0.1,56891,loginAttempt:solson16:password123
+2024.04.04.11.55.15,127.0.0.1,56891,Successful Login Attempt from /127.0.0.1 on port 56891 to account solson16
+2024.04.04.11.55.17,127.0.0.1,56891,FetchDir:solson16
+2024.04.04.11.55.55,127.0.0.1,56894,login
+2024.04.04.11.56.01,127.0.0.1,56894,loginAttempt:solson16:password123
+2024.04.04.11.56.01,127.0.0.1,56894,Successful Login Attempt from /127.0.0.1 on port 56894 to account solson16
+2024.04.04.11.56.18,127.0.0.1,56894,FetchDir:solson16
+2024.04.04.11.59.17,127.0.0.1,56920,login
+2024.04.04.11.59.25,127.0.0.1,56920,loginAttempt:solson16:password123
+2024.04.04.11.59.26,127.0.0.1,56920,Successful Login Attempt from /127.0.0.1 on port 56920 to account solson16
+2024.04.04.11.59.27,127.0.0.1,56920,FetchDir:solson16
+2024.04.04.12.01.08,127.0.0.1,56933,login
+2024.04.04.12.01.14,127.0.0.1,56933,loginAttempt:solson16:password123
+2024.04.04.12.01.15,127.0.0.1,56933,Successful Login Attempt from /127.0.0.1 on port 56933 to account solson16
+2024.04.04.12.01.16,127.0.0.1,56933,FetchDir:solson16
+2024.04.04.12.04.13,127.0.0.1,56957,login
+2024.04.04.12.04.19,127.0.0.1,56957,loginAttempt:solson16:password123
+2024.04.04.12.04.19,127.0.0.1,56957,Successful Login Attempt from /127.0.0.1 on port 56957 to account solson16
+2024.04.04.12.04.21,127.0.0.1,56957,FetchDir:solson16
+2024.04.04.12.05.17,127.0.0.1,56957,Error: java.io.EOFException
+2024.04.04.12.05.23,127.0.0.1,56963,login
+2024.04.04.12.05.29,127.0.0.1,56963,loginAttempt:solson16:password123
+2024.04.04.12.05.29,127.0.0.1,56963,Successful Login Attempt from /127.0.0.1 on port 56963 to account solson16
+2024.04.04.12.05.31,127.0.0.1,56963,FetchDir:solson16
+2024.04.04.12.05.44,127.0.0.1,56963,Error: java.io.EOFException
+2024.04.04.12.05.51,127.0.0.1,56967,login
+2024.04.04.12.05.57,127.0.0.1,56967,loginAttempt:solson16:password123
+2024.04.04.12.05.57,127.0.0.1,56967,Successful Login Attempt from /127.0.0.1 on port 56967 to account solson16
+2024.04.04.12.05.58,127.0.0.1,56967,FetchDir:solson16
+2024.04.04.12.06.45,127.0.0.1,56967,Error: java.io.EOFException
+2024.04.04.12.06.56,127.0.0.1,56976,login
+2024.04.04.12.07.02,127.0.0.1,56976,loginAttempt:solson16:password123
+2024.04.04.12.07.02,127.0.0.1,56976,Successful Login Attempt from /127.0.0.1 on port 56976 to account solson16
+2024.04.04.12.07.04,127.0.0.1,56976,FetchDir:solson16
+2024.04.04.12.07.11,127.0.0.1,56976,fetchFile:solson16:pset62.java
+2024.04.04.12.07.13,127.0.0.1,56976,fetchFile:solson16:pset62.java
+2024.04.04.12.07.32,127.0.0.1,56976,Error: java.io.EOFException
+2024.04.04.12.07.44,127.0.0.1,56981,login
+2024.04.04.12.07.50,127.0.0.1,56981,loginAttempt:solson16:password123
+2024.04.04.12.07.50,127.0.0.1,56981,Successful Login Attempt from /127.0.0.1 on port 56981 to account solson16
+2024.04.04.12.07.52,127.0.0.1,56981,FetchDir:solson16
+2024.04.04.12.07.55,127.0.0.1,56981,FetchFile:solson16:pset62.java
+2024.04.04.12.08.46,127.0.0.1,56997,login
+2024.04.04.12.08.52,127.0.0.1,56997,loginAttempt:solson16:password123
+2024.04.04.12.08.52,127.0.0.1,56997,Successful Login Attempt from /127.0.0.1 on port 56997 to account solson16
+2024.04.04.12.08.54,127.0.0.1,56997,FetchDir:solson16
+2024.04.04.12.08.56,127.0.0.1,56997,FetchFile:solson16:pset62.java
+2024.04.04.12.10.20,127.0.0.1,57008,login
+2024.04.04.12.10.27,127.0.0.1,57008,loginAttempt:solson16:password123
+2024.04.04.12.10.27,127.0.0.1,57008,Successful Login Attempt from /127.0.0.1 on port 57008 to account solson16
+2024.04.04.12.10.29,127.0.0.1,57008,FetchDir:solson16
+2024.04.04.12.10.31,127.0.0.1,57008,FetchFile:solson16:pset62.java
+2024.04.04.12.10.33,127.0.0.1,57008,FetchFile:solson16:pset62.java
+2024.04.04.12.10.38,127.0.0.1,57008,FetchFile:solson16:pset62.java
+2024.04.04.12.11.32,127.0.0.1,57008,Error: java.io.EOFException
+2024.04.04.12.11.42,127.0.0.1,57015,login
+2024.04.04.12.11.48,127.0.0.1,57015,loginAttempt:solson16:password123
+2024.04.04.12.11.48,127.0.0.1,57015,Successful Login Attempt from /127.0.0.1 on port 57015 to account solson16
+2024.04.04.12.11.50,127.0.0.1,57015,FetchDir:solson16
+2024.04.04.12.11.52,127.0.0.1,57015,FetchFile:solson16:main.py
+2024.04.04.12.11.56,127.0.0.1,57015,FetchFile:solson16:textFile.txt
 2024.03.26.13.02.57,127.0.0.1,53918,Successful Login Attempt from /127.0.0.1 on port 53918 to account solson16

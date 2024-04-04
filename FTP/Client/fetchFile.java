@@ -2,6 +2,7 @@ import java.io.DataOutputStream;
 import java.io.DataInputStream;
 import java.io.File;
 import javax.swing.*;
+import java.io.FileOutputStream;
 
 
 public class fetchFile{
@@ -10,10 +11,10 @@ public class fetchFile{
         JFrame frame = new JFrame("File Fetcher");
         frame.setSize(400, 300);
         try{
-            File file = new File("/Users/Admin/Desktop/Projects/data/" + username + "/");
-            if (file.exists()){
-                //get list of files 
-                String[] files = file.list();
+            out.writeUTF("FetchDir:" + username);
+            String fileList = in.readUTF();
+            if (fileList.contains("Directory:")){
+                String[] files = fileList.split(":")[1].split(",");
                 JList<String> list = new JList<String>(files);
                 list.setBounds(50, 50, 300, 200);
                 frame.add(list);
@@ -30,17 +31,15 @@ public class fetchFile{
                 fetchButton.addActionListener(e -> {
                     String selectedFile = list.getSelectedValue();
                     try{
-                        out.writeUTF("fetchFile:" + username + ":" + selectedFile);
-                        String reply = in.readUTF();
-                        if (reply.contains("true")){
-                            JOptionPane.showMessageDialog(frame, "File Fetched");
-                        }
-                        else if (reply.contains("false")){
-                            JOptionPane.showMessageDialog(frame, "File Fetch Failed");
-                        }
-                        else{
-                            System.out.println("Error: " + reply);
-                        }
+                        out.writeUTF("FetchFile:" + username + ":" + selectedFile);
+                        byte[] fileData = new byte[1024];
+                        int bytesRead = in.read(fileData);
+                        File file = new File(selectedFile);
+                        file.createNewFile();
+                        FileOutputStream fileOut = new FileOutputStream(file);
+                        fileOut.write(fileData, 0, bytesRead);
+                        fileOut.close();
+                        JOptionPane.showMessageDialog(frame, "File Fetched");
                     }
                     catch(Exception ex){
                         System.out.println(ex);
@@ -48,8 +47,17 @@ public class fetchFile{
                 });
             }
             else{
-                logging log = new logging();
-                log.log("Error while fetching file, could not find fetch folder", "localhost", "8080");
+                JLabel noFiles = new JLabel("No Files Found");
+                noFiles.setBounds(150, 150, 100, 30);
+                frame.add(noFiles);
+
+                JButton backButton = new JButton("Back");
+                backButton.setBounds(250, 250, 100, 30);
+                frame.add(backButton);
+                backButton.addActionListener(e -> {
+                    frame.dispose();
+                    new fetchPage(username, out, in);
+                });
             }
         }
         catch(Exception ex){
