@@ -29,9 +29,13 @@ public class storeFile {
         //when store button is clicked
         storeButton.addActionListener(e -> {
             String fileName = fileField.getText();
+            File file = new File(fileName);
+            if (!file.exists()){
+                JOptionPane.showMessageDialog(frame, "File does not exist");
+                return;
+            }
             try{
                 out.writeUTF("StoreFile:" + username + ":" + fileName);
-                File file = new File(fileName);
                 byte[] fileContent = Files.readAllBytes(file.toPath());
                 out.write(fileContent);
                 JOptionPane.showMessageDialog(frame, "File Stored");

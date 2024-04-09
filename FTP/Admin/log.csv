@@ -263,4 +263,15 @@
 2024.04.09.11.59.23,127.0.0.1,49858,FetchFile:solson16:main.py
 2024.04.09.12.00.25,127.0.0.1,49858,FetchFile:solson16:networking.md
 2024.04.09.12.00.40,127.0.0.1,49858,Error: java.net.SocketException: Connection reset
+2024.04.09.12.06.05,127.0.0.1,49919,login
+2024.04.09.12.06.13,127.0.0.1,49919,loginAttempt:solson16:password123
+2024.04.09.12.06.13,127.0.0.1,49919,Successful Login Attempt from /127.0.0.1 on port 49919 to account solson16
+2024.04.09.12.06.26,127.0.0.1,49919,StoreFile:solson16:clients.java
+2024.04.09.12.06.34,127.0.0.1,49919,Error: java.io.EOFException
+2024.04.09.12.06.36,127.0.0.1,49920,logn
+2024.04.09.12.06.38,127.0.0.1,49920,login
+2024.04.09.12.06.44,127.0.0.1,49920,loginAttempt:solson16:password123
+2024.04.09.12.06.44,127.0.0.1,49920,Successful Login Attempt from /127.0.0.1 on port 49920 to account solson16
+2024.04.09.12.06.46,127.0.0.1,49920,FetchDir:solson16
+2024.04.09.12.07.16,127.0.0.1,49920,exit
 2024.03.26.13.02.57,127.0.0.1,53918,Successful Login Attempt from /127.0.0.1 on port 53918 to account solson16
