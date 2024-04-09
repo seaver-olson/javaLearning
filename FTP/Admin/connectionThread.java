@@ -90,7 +90,7 @@ public class connectionThread extends Thread{
                     String username = fileInfo[1];
                     String fileName = fileInfo[2];
                     System.out.println("Fetching File: " + fileName + " for " + username);
-                    File file = new File("/Users/Admin/Desktop/Projects/data" + username + "/" + fileName);
+                    File file = new File("/Users/Admin/Desktop/Projects/data/" + username + "/" + fileName);
                     if (file.exists()){
                         FileInputStream fileIn = new FileInputStream(file);
                         byte[] fileData = new byte[(int) file.length()];
@@ -99,8 +99,19 @@ public class connectionThread extends Thread{
                         fileIn.close();
                     }
                     else{
+                        System.out.println("Error file not found");
                         out.writeUTF("false");
                     }
+                }
+                else if (message.contains("StoreFile")){
+                    String username = message.split(":")[1];
+                    String filename = message.split(":")[2];
+                    byte[] fileData = in.readAllBytes();
+                    File file = new File("/Users/Admin/Desktop/Projects/data/" + username + "/" + filename);
+                    file.createNewFile();
+                    FileOutputStream fileOut = new FileOutputStream(file);
+                    fileOut.write(fileData);
+                    fileOut.close();
                 }
                 else if (message.contains("registerAttempt")){
                     String[] registerInfo = message.split(":");

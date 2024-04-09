@@ -30,7 +30,7 @@ public class fetchPage{
         frame.add(StoreButton);
         StoreButton.addActionListener(e -> {
             frame.dispose();
-            //new storeFile(username);
+            new storeFile(username, out, in);
         });
 
         JButton TransferButton = new JButton("Transfer File");
@@ -38,7 +38,7 @@ public class fetchPage{
         frame.add(TransferButton);
         TransferButton.addActionListener(e -> {
             frame.dispose();
-            //new transferFile(username);
+            new transferFile(username, out, in);
         });
 
 
