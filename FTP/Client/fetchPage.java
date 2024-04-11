@@ -8,7 +8,7 @@ public class fetchPage{
         frame.setSize(400, 300);
 
         JLabel UsernameLabel = new JLabel("Welcome " + username);
-        UsernameLabel.setBounds(50, 50, 100, 30);
+        UsernameLabel.setBounds(50, 50, 200, 30);
         frame.add(UsernameLabel);
 
         //First Screen should have 3 buttons, fetch file, store file, transfer file
@@ -25,16 +25,16 @@ public class fetchPage{
             frame.dispose();
         });
 
-        JButton StoreButton = new JButton("Store File");
-        StoreButton.setBounds(150, 150, 100, 30);
+        JButton StoreButton = new JButton("Store/Remove File from Server");
+        StoreButton.setBounds(50, 150, 300, 30);
         frame.add(StoreButton);
         StoreButton.addActionListener(e -> {
             frame.dispose();
             new storeFile(username, out, in);
         });
 
-        JButton TransferButton = new JButton("Transfer File");
-        TransferButton.setBounds(150, 200, 100, 30);
+        JButton TransferButton = new JButton("Transfer File to/from Another User");
+        TransferButton.setBounds(50, 200, 300, 30);
         frame.add(TransferButton);
         TransferButton.addActionListener(e -> {
             frame.dispose();

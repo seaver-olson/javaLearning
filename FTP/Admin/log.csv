@@ -274,4 +274,21 @@
 2024.04.09.12.06.44,127.0.0.1,49920,Successful Login Attempt from /127.0.0.1 on port 49920 to account solson16
 2024.04.09.12.06.46,127.0.0.1,49920,FetchDir:solson16
 2024.04.09.12.07.16,127.0.0.1,49920,exit
+2024.04.11.11.37.35,127.0.0.1,52194,login
+2024.04.11.11.37.44,127.0.0.1,52194,loginAttempt:solson16:password123
+2024.04.11.11.37.44,127.0.0.1,52194,Successful Login Attempt from /127.0.0.1 on port 52194 to account solson16
+2024.04.11.11.38.17,127.0.0.1,52194,Error: java.io.EOFException
+2024.04.11.11.38.49,127.0.0.1,52214,login
+2024.04.11.11.38.56,127.0.0.1,52214,loginAttempt:solson16:password123
+2024.04.11.11.38.56,127.0.0.1,52214,Successful Login Attempt from /127.0.0.1 on port 52214 to account solson16
+2024.04.11.11.41.36,127.0.0.1,52214,Error: java.io.EOFException
+2024.04.11.11.46.30,127.0.0.1,52249,login
+2024.04.11.11.46.37,127.0.0.1,52249,loginAttempt:solson16:password123
+2024.04.11.11.46.37,127.0.0.1,52249,Successful Login Attempt from /127.0.0.1 on port 52249 to account solson16
+2024.04.11.11.46.39,127.0.0.1,52249,FetchDir:solson16
+2024.04.11.11.46.46,127.0.0.1,52249,exit
+2024.04.11.11.46.49,127.0.0.1,52250,login
+2024.04.11.11.46.55,127.0.0.1,52250,loginAttempt:solson16:password123
+2024.04.11.11.46.55,127.0.0.1,52250,Successful Login Attempt from /127.0.0.1 on port 52250 to account solson16
+2024.04.11.11.47.00,127.0.0.1,52250,RemoveFile:solson16:
 2024.03.26.13.02.57,127.0.0.1,53918,Successful Login Attempt from /127.0.0.1 on port 53918 to account solson16

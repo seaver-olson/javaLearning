@@ -25,14 +25,41 @@ public class storeFile {
         JButton backButton = new JButton("Back");
         backButton.setBounds(250, 250, 100, 30);
         frame.add(backButton);
+        //future set up
+        /*
+         *  Store button and remove button
+         *  If using store function, use full path to store file
+         *  If using remove function, use file name to remove file from server
+         */
+        JButton removeButton = new JButton("Remove");
+        removeButton.setBounds(50, 150, 100, 30);
+        frame.add(removeButton);
+
+        
+        removeButton.addActionListener(e -> {
+            String fileName = fileField.getText();
+
+            if (fileName.equals("") || fileName == null){
+                throw new IllegalArgumentException("File Name cannot be empty");
+            }
+            try{
+                out.writeUTF("RemoveFile:" + username + ":" + fileName);
+                JOptionPane.showMessageDialog(frame, "File Removed");
+            }
+            catch(Exception ex){
+                System.out.println(ex);
+            }
+        });
 
         //when store button is clicked
         storeButton.addActionListener(e -> {
             String fileName = fileField.getText();
+            if (fileName.equals("") || fileName == null){
+                throw new IllegalArgumentException("File Name cannot be empty");
+            }
             File file = new File(fileName);
             if (!file.exists()){
-                JOptionPane.showMessageDialog(frame, "File does not exist");
-                return;
+                throw new IllegalArgumentException("File does not exist");
             }
             try{
                 out.writeUTF("StoreFile:" + username + ":" + fileName);
@@ -53,4 +80,5 @@ public class storeFile {
         frame.setLayout(null);
         frame.setVisible(true);
     }
+    
 }
