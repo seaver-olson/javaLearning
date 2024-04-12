@@ -291,4 +291,136 @@
 2024.04.11.11.46.55,127.0.0.1,52250,loginAttempt:solson16:password123
 2024.04.11.11.46.55,127.0.0.1,52250,Successful Login Attempt from /127.0.0.1 on port 52250 to account solson16
 2024.04.11.11.47.00,127.0.0.1,52250,RemoveFile:solson16:
+2024.04.12.12.59.58,127.0.0.1,52250,Error: java.net.SocketException: Connection reset
+2024.04.12.13.00.21,127.0.0.1,53097,login
+2024.04.12.13.00.30,127.0.0.1,53097,loginAttempt:solson16:password123
+2024.04.12.13.00.30,127.0.0.1,53097,Successful Login Attempt from /127.0.0.1 on port 53097 to account solson16
+2024.04.12.13.01.02,127.0.0.1,53097,RemoveFile:solson16:clients.java
+2024.04.12.13.01.08,127.0.0.1,53097,StoreFile:solson16:clients.java
+2024.04.12.13.01.28,127.0.0.1,53097,Error: java.io.EOFException
+2024.04.12.13.14.27,127.0.0.1,53197,login
+2024.04.12.13.14.34,127.0.0.1,53197,loginAttempt:solson16:password123
+2024.04.12.13.14.34,127.0.0.1,53197,Successful Login Attempt from /127.0.0.1 on port 53197 to account solson16
+2024.04.12.13.15.10,127.0.0.1,53197,FetchDir:solson16
+2024.04.12.13.15.17,127.0.0.1,53197,Error: java.io.EOFException
+2024.04.12.13.16.03,127.0.0.1,53205,login
+2024.04.12.13.16.09,127.0.0.1,53205,loginAttempt:solson16:password123
+2024.04.12.13.16.09,127.0.0.1,53205,Successful Login Attempt from /127.0.0.1 on port 53205 to account solson16
+2024.04.12.13.16.11,127.0.0.1,53205,FetchDir:solson16
+2024.04.12.13.16.13,127.0.0.1,53205,FetchDir:solson16
+2024.04.12.13.16.15,127.0.0.1,53205,FetchDir:solson16
+2024.04.12.13.16.18,127.0.0.1,53205,FetchDir:solson16
+2024.04.12.13.16.21,127.0.0.1,53205,Error: java.io.EOFException
+2024.04.12.13.30.49,127.0.0.1,53271,login
+2024.04.12.13.30.57,127.0.0.1,53271,loginAttempt:solson16:password123
+2024.04.12.13.30.57,127.0.0.1,53271,Successful Login Attempt from /127.0.0.1 on port 53271 to account solson16
+2024.04.12.13.30.59,127.0.0.1,53271,FetchDir:solson16
+2024.04.12.13.35.36,127.0.0.1,53271,Error: java.io.EOFException
+2024.04.12.14.07.30,127.0.0.1,53457,login
+2024.04.12.14.07.46,127.0.0.1,53457,loginAttempt:solson16:password123
+2024.04.12.14.07.46,127.0.0.1,53457,Successful Login Attempt from /127.0.0.1 on port 53457 to account solson16
+2024.04.12.14.08.22,127.0.0.1,53457,Error: java.io.EOFException
+2024.04.12.14.08.25,127.0.0.1,53464,login
+2024.04.12.14.08.27,127.0.0.1,53464,Error: java.net.SocketException: Connection reset
+2024.04.12.14.08.33,127.0.0.1,53465,login
+2024.04.12.14.08.39,127.0.0.1,53465,loginAttempt:solson16:password123
+2024.04.12.14.08.39,127.0.0.1,53465,Successful Login Attempt from /127.0.0.1 on port 53465 to account solson16
+2024.04.12.14.09.07,127.0.0.1,53465,Error: java.io.EOFException
+2024.04.12.14.21.08,127.0.0.1,53520,login
+2024.04.12.14.21.15,127.0.0.1,53520,loginAttempt:solson16:password123
+2024.04.12.14.21.15,127.0.0.1,53520,Successful Login Attempt from /127.0.0.1 on port 53520 to account solson16
+2024.04.12.14.21.18,127.0.0.1,53520,FetchDir:solson16
+2024.04.12.14.22.21,127.0.0.1,53520,Error: java.io.EOFException
+2024.04.12.14.22.27,127.0.0.1,53528,login
+2024.04.12.14.22.33,127.0.0.1,53528,loginAttempt:solson16:password123
+2024.04.12.14.22.33,127.0.0.1,53528,Successful Login Attempt from /127.0.0.1 on port 53528 to account solson16
+2024.04.12.14.22.35,127.0.0.1,53528,FetchDir:solson16
+2024.04.12.14.22.48,127.0.0.1,53528,Error: java.io.EOFException
+2024.04.12.14.23.04,127.0.0.1,53530,login
+2024.04.12.14.23.09,127.0.0.1,53530,loginAttempt:solson16:password123
+2024.04.12.14.23.09,127.0.0.1,53530,Successful Login Attempt from /127.0.0.1 on port 53530 to account solson16
+2024.04.12.14.23.11,127.0.0.1,53530,FetchDir:solson16
+2024.04.12.14.23.22,127.0.0.1,53530,TransferFile:solson16:whonig:.DS_Store
+2024.04.12.14.23.22,127.0.0.1,53530,Error: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+2024.04.12.14.23.41,127.0.0.1,53531,login
+2024.04.12.14.23.47,127.0.0.1,53531,loginAttempt:solson16:password123
+2024.04.12.14.23.47,127.0.0.1,53531,Successful Login Attempt from /127.0.0.1 on port 53531 to account solson16
+2024.04.12.14.23.49,127.0.0.1,53531,FetchDir:solson16
+2024.04.12.14.24.02,127.0.0.1,53531,TransferFile:solson16:whonig:dataStorage.csv
+2024.04.12.14.24.02,127.0.0.1,53531,Error: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+2024.04.12.14.25.11,127.0.0.1,53539,login
+2024.04.12.14.25.17,127.0.0.1,53539,loginAttempt:solson16:password123
+2024.04.12.14.25.17,127.0.0.1,53539,Successful Login Attempt from /127.0.0.1 on port 53539 to account solson16
+2024.04.12.14.25.19,127.0.0.1,53539,FetchDir:solson16
+2024.04.12.14.25.29,127.0.0.1,53539,TransferFile:solson16:whonig:dataStorage.csv
+2024.04.12.14.25.29,127.0.0.1,53539,Error: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+2024.04.12.14.26.53,127.0.0.1,53544,login
+2024.04.12.14.26.59,127.0.0.1,53544,loginAttempt:solson16:password123
+2024.04.12.14.26.59,127.0.0.1,53544,Successful Login Attempt from /127.0.0.1 on port 53544 to account solson16
+2024.04.12.14.27.01,127.0.0.1,53544,FetchDir:solson16
+2024.04.12.14.27.09,127.0.0.1,53544,TransferFile:solson16:whonig:clients.java
+2024.04.12.14.27.09,127.0.0.1,53544,File Transfer Request from solson16 to whonig for file clients.java
+2024.04.12.14.27.27,127.0.0.1,53545,login
+2024.04.12.14.27.42,127.0.0.1,53545,loginAttempt:whonig:comp271
+2024.04.12.14.27.42,127.0.0.1,53545,Successful Login Attempt from /127.0.0.1 on port 53545 to account whonig
+2024.04.12.14.28.12,127.0.0.1,53545,Error: java.io.EOFException
+2024.04.12.14.28.19,127.0.0.1,53551,login
+2024.04.12.14.28.26,127.0.0.1,53551,loginAttempt:whonig:comp271
+2024.04.12.14.28.26,127.0.0.1,53551,Successful Login Attempt from /127.0.0.1 on port 53551 to account whonig
+2024.04.12.14.33.10,127.0.0.1,53586,login
+2024.04.12.14.33.17,127.0.0.1,53586,loginAttempt:solson16:password123
+2024.04.12.14.33.17,127.0.0.1,53586,Successful Login Attempt from /127.0.0.1 on port 53586 to account solson16
+2024.04.12.14.33.17,127.0.0.1,53586,Error: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+2024.04.12.14.33.31,127.0.0.1,53587,login
+2024.04.12.14.33.39,127.0.0.1,53587,loginAttempt:whonig:comp271
+2024.04.12.14.33.39,127.0.0.1,53587,Successful Login Attempt from /127.0.0.1 on port 53587 to account whonig
+2024.04.12.14.33.39,127.0.0.1,53587,Error: java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+2024.04.12.14.37.58,127.0.0.1,53607,login
+2024.04.12.14.38.08,127.0.0.1,53607,loginAttempt:whonig:comp271
+2024.04.12.14.38.08,127.0.0.1,53607,Successful Login Attempt from /127.0.0.1 on port 53607 to account whonig
+2024.04.12.14.39.28,127.0.0.1,53618,login
+2024.04.12.14.39.34,127.0.0.1,53618,loginAttempt:solson16:password123
+2024.04.12.14.39.34,127.0.0.1,53618,Successful Login Attempt from /127.0.0.1 on port 53618 to account solson16
+2024.04.12.14.39.39,127.0.0.1,53618,exit
+2024.04.12.14.39.43,127.0.0.1,53620,login
+2024.04.12.14.39.49,127.0.0.1,53620,loginAttempt:whonig:comp271
+2024.04.12.14.39.49,127.0.0.1,53620,Successful Login Attempt from /127.0.0.1 on port 53620 to account whonig
+2024.04.12.14.40.05,127.0.0.1,53620,exit
+2024.04.12.14.40.10,127.0.0.1,53624,login
+2024.04.12.14.40.18,127.0.0.1,53624,loginAttempt:solson16:password123
+2024.04.12.14.40.18,127.0.0.1,53624,Successful Login Attempt from /127.0.0.1 on port 53624 to account solson16
+2024.04.12.14.40.20,127.0.0.1,53624,FetchDir:solson16
+2024.04.12.14.40.31,127.0.0.1,53624,TransferFile:solson16:whonig:download.jpeg
+2024.04.12.14.40.31,127.0.0.1,53624,File Transfer Request from solson16 to whonig for file download.jpeg
+2024.04.12.14.40.34,127.0.0.1,53624,exit
+2024.04.12.14.40.38,127.0.0.1,53625,login
+2024.04.12.14.40.46,127.0.0.1,53625,loginAttempt:whonig:comp271
+2024.04.12.14.40.46,127.0.0.1,53625,Successful Login Attempt from /127.0.0.1 on port 53625 to account whonig
+2024.04.12.14.40.50,127.0.0.1,53625,ConfirmTransfer:whonig:solson16:download.jpeg
+2024.04.12.14.40.52,127.0.0.1,53625,FetchDir:whonig
+2024.04.12.14.41.11,127.0.0.1,53625,FetchDir:whonig
+2024.04.12.14.41.14,127.0.0.1,53625,FetchDir:whonig
+2024.04.12.14.41.22,127.0.0.1,53625,Error: java.io.EOFException
+2024.04.12.14.42.51,127.0.0.1,53639,login
+2024.04.12.14.42.56,127.0.0.1,53639,loginAttempt:solson16:password123
+2024.04.12.14.42.56,127.0.0.1,53639,Successful Login Attempt from /127.0.0.1 on port 53639 to account solson16
+2024.04.12.14.42.58,127.0.0.1,53639,FetchDir:solson16
+2024.04.12.14.43.02,127.0.0.1,53639,TransferFile:solson16:whonig:networking.md
+2024.04.12.14.43.02,127.0.0.1,53639,File Transfer Request from solson16 to whonig for file networking.md
+2024.04.12.14.43.11,127.0.0.1,53640,login
+2024.04.12.14.43.19,127.0.0.1,53640,loginAttempt:whonig:comp271
+2024.04.12.14.43.19,127.0.0.1,53640,Successful Login Attempt from /127.0.0.1 on port 53640 to account whonig
+2024.04.12.14.43.22,127.0.0.1,53640,ConfirmTransfer:whonig:solson16:download.jpeg
+2024.04.12.14.47.40,127.0.0.1,53670,login
+2024.04.12.14.48.00,127.0.0.1,53670,loginAttempt:whonig:comp271
+2024.04.12.14.48.00,127.0.0.1,53670,Successful Login Attempt from /127.0.0.1 on port 53670 to account whonig
+2024.04.12.14.48.03,127.0.0.1,53670,ConfirmTransfer:whonig:solson16:download.jpeg
+2024.04.12.14.48.03,127.0.0.1,53670,Error: java.io.FileNotFoundException: /Users/Admin/Desktop/Projects/data/whonig/download.jpeg (No such file or directory)
+2024.04.12.14.49.13,127.0.0.1,53683,login
+2024.04.12.14.49.24,127.0.0.1,53683,loginAttempt:whonig:comp271
+2024.04.12.14.49.24,127.0.0.1,53683,Successful Login Attempt from /127.0.0.1 on port 53683 to account whonig
+2024.04.12.14.49.29,127.0.0.1,53683,ConfirmTransfer:whonig:solson16:download.jpeg
+2024.04.12.14.49.29,127.0.0.1,53683,Transfer Request Confirmed from solson16 to whonig for file download.jpeg
+2024.04.12.14.49.32,127.0.0.1,53683,FetchDir:whonig
+2024.04.12.14.49.37,127.0.0.1,53683,Error: java.io.EOFException
 2024.03.26.13.02.57,127.0.0.1,53918,Successful Login Attempt from /127.0.0.1 on port 53918 to account solson16

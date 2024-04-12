@@ -27,6 +27,11 @@ public class fetchFile{
                 backButton.setBounds(250, 250, 100, 30);
                 frame.add(backButton);
 
+                backButton.addActionListener(e -> {
+                    frame.dispose();
+                    new fetchPage(username, out, in);
+                });
+
                 //when fetch button is clicked
                 fetchButton.addActionListener(e -> {
                     String selectedFile = list.getSelectedValue();

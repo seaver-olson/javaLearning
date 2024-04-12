@@ -46,6 +46,18 @@ public class login{
                 reply = in.readUTF();
                 if (reply.contains("LOGIN:SUCCESS")){
                     JOptionPane.showMessageDialog(frame, "Login Successful");
+                    if (reply.contains("transferRequest")){
+                        String[] parts = reply.split(":");
+                        String toUser = parts[3];
+                        String fileName = parts[4];
+                        int dialogResult = JOptionPane.showConfirmDialog(frame, "User " + toUser + " wants to transfer file " + fileName + " to you. Do you accept?");
+                        if (dialogResult == JOptionPane.YES_OPTION){
+                            out.writeUTF("ConfirmTransfer:" + username + ":" + toUser + ":" + fileName);
+                        }
+                        else{
+                            out.writeUTF("DenyTransfer:" + username + ":" + toUser + ":" + fileName);
+                        }
+                    }
                     frame.dispose();
                     new fetchPage(username, out, in);
                 }

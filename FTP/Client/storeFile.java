@@ -25,12 +25,7 @@ public class storeFile {
         JButton backButton = new JButton("Back");
         backButton.setBounds(250, 250, 100, 30);
         frame.add(backButton);
-        //future set up
-        /*
-         *  Store button and remove button
-         *  If using store function, use full path to store file
-         *  If using remove function, use file name to remove file from server
-         */
+
         JButton removeButton = new JButton("Remove");
         removeButton.setBounds(50, 150, 100, 30);
         frame.add(removeButton);
@@ -44,7 +39,13 @@ public class storeFile {
             }
             try{
                 out.writeUTF("RemoveFile:" + username + ":" + fileName);
-                JOptionPane.showMessageDialog(frame, "File Removed");
+                String response = in.readUTF();
+                if (response.contains("true")){
+                    JOptionPane.showMessageDialog(frame, "File Removed");
+                }
+                else{
+                    JOptionPane.showMessageDialog(frame, "File Not Found");
+                }
             }
             catch(Exception ex){
                 System.out.println(ex);

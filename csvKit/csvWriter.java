@@ -51,6 +51,38 @@ public class csvWriter {
         }
     }
 
+    public void removeRow(int index){
+        String[][] newData = new String[this.data.length-1][this.data[0].length];
+        for (int i = 0; i < index; i++){
+            for (int j = 0; j < this.data[0].length; j++){
+                newData[i][j] = this.data[i][j];
+            }
+        }
+        for (int i = index; i < this.data.length-1; i++){
+            for (int j = 0; j < this.data[0].length; j++){
+                newData[i][j] = this.data[i+1][j];
+            }
+        }
+        this.data = newData;
+        //write data to file
+        try{
+            FileWriter writer = new FileWriter(this.file);
+            for (int i = 0; i < this.data.length; i++){
+                for (int j = 0; j < this.data[0].length; j++){
+                    writer.append(this.data[i][j]);
+                    // if not last ele add comma
+                    if (j < this.data[0].length-1){
+                        writer.append(",");
+                    }
+                }
+                // if not last row add newline
+                writer.append("\n");
+            }
+            writer.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+    }}
     public void writeRow(String[] row, int index){
         //if append then add String[] to data String[][]
         if (append){ 
