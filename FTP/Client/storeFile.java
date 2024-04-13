@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.io.DataOutputStream;
 import java.io.DataInputStream;
-import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.io.File;
 
@@ -30,7 +29,7 @@ public class storeFile {
         removeButton.setBounds(50, 150, 100, 30);
         frame.add(removeButton);
 
-        
+
         removeButton.addActionListener(e -> {
             String fileName = fileField.getText();
 

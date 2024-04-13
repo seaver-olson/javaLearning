@@ -23,12 +23,20 @@ public class transferFile {
                 userField.setBounds(200, 250, 150, 30);
                 frame.add(userField);
 
+                JLabel keepFile = new JLabel("Keep File?");
+                keepFile.setBounds(50, 300, 150, 30);
+                frame.add(keepFile);
+
+                JCheckBox keepBox = new JCheckBox();
+                keepBox.setBounds(200, 300, 150, 30);
+                frame.add(keepBox);
+
                 JButton transferButton = new JButton("Transfer");
-                transferButton.setBounds(150, 300, 100, 30);
+                transferButton.setBounds(150, 350, 100, 30);
                 frame.add(transferButton);
 
                 JButton backButton = new JButton("Back");
-                backButton.setBounds(250, 300, 100, 30);
+                backButton.setBounds(250, 350, 100, 30);
                 frame.add(backButton);
 
                 backButton.addActionListener(e -> {
@@ -39,6 +47,15 @@ public class transferFile {
                 transferButton.addActionListener(e -> {
                     String toUser = userField.getText();
                     String fileName = list.getSelectedValue();
+                    boolean keep = keepBox.isSelected();
+                    if (!keep){
+                        try{
+                            out.writeUTF("RemoveFile:" + username + ":" + fileName);
+                        }
+                        catch(Exception ex){
+                            System.out.println(ex);
+                        }
+                    }
                     if (toUser.equals("") || toUser == null || fileName.equals("") || fileName == null){
                         throw new IllegalArgumentException("Username or File Name cannot be empty");
                     }
